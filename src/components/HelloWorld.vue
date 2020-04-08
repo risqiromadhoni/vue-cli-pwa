@@ -1,9 +1,16 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <div class="mt-3">
+      <b-button-group>
+        <b-button variant="success">Success</b-button>
+        <b-button variant="info">{{ nomor }}</b-button>
+        <b-button variant="warning">Warning</b-button>
+      </b-button-group>
+    </div>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
+      For a guide and recipes on how to configure / customize this project,
+      <br />check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
         >vue-cli documentation</a
       >.
@@ -130,7 +137,8 @@
 export default {
   name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
+    nomor: String
   }
 };
 </script>

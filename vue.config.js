@@ -4,5 +4,11 @@ module.exports = {
     manifestOptions: {
       background_color: "#4A4A4A"
     }
+  },
+
+  pluginOptions: {
+    moment: {
+      locales: ["en", "id"]
+    }
   }
 };

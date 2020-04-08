@@ -4,13 +4,8 @@ import { routes } from "./routes";
 
 Vue.use(VueRouter);
 
-let router_mode = "hash";
-if (process.env.NODE_ENV === "production") {
-  router_mode = "history";
-}
-
 const router = new VueRouter({
-  mode: router_mode,
+  mode: process.env.VUE_APP_ROUTER_MODE,
   routes
 });
 
