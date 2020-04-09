@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   pwa: {
     name: "FoodPedia Pesanduluan",
@@ -9,6 +11,14 @@ module.exports = {
   pluginOptions: {
     moment: {
       locales: ["en", "id"]
+    }
+  },
+
+  configureWebpack: {
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src/")
+      }
     }
   }
 };
