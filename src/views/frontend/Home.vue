@@ -30,7 +30,7 @@
           <div class="col-lg-6 col-12">
             <div class="about-thumb">
               <img
-                src="@/assets/images/frontend/about/01.png"
+                v-lazy="require('@/assets/images/frontend/about/01.png')"
                 alt="about-food"
               />
             </div>
@@ -85,7 +85,9 @@
                 <div class="product-item style-2">
                   <div class="product-thumb">
                     <img
-                      src="https://assets.grab.com/wp-content/uploads/sites/9/2019/09/20152145/02-icon-food.png"
+                      v-lazy="
+                        require('@/assets/images/frontend/icons/02-icon-food.png')
+                      "
                       alt="food-product"
                     />
                   </div>
@@ -106,7 +108,9 @@
                 <div class="product-item style-2">
                   <div class="product-thumb">
                     <img
-                      src="https://assets.grab.com/wp-content/uploads/sites/9/2019/09/20152146/04-icon-hotels-700x700.png"
+                      v-lazy="
+                        require('@/assets/images/frontend/icons/04-icon-hotels-700x700.png')
+                      "
                       alt="food-product"
                     />
                   </div>
@@ -127,7 +131,9 @@
                 <div class="product-item style-2">
                   <div class="product-thumb">
                     <img
-                      src="https://assets.grab.com/wp-content/uploads/sites/9/2019/09/20152145/03-icon-delivery-700x700.png"
+                      v-lazy="
+                        require('@/assets/images/frontend/icons/03-icon-delivery-700x700.png')
+                      "
                       alt="food-product"
                     />
                   </div>
@@ -154,10 +160,16 @@
     <!-- Booking Table Section Start Here -->
     <section class="booking-table padding-tb">
       <div class="shape-1">
-        <img src="@/assets/images/frontend/banner/shape/02.png" alt="banner" />
+        <img
+          v-lazy="require('@/assets/images/frontend/banner/shape/02.png')"
+          alt="banner"
+        />
       </div>
       <div class="shape-2">
-        <img src="@/assets/images/frontend/banner/shape/02.png" alt="banner" />
+        <img
+          v-lazy="require('@/assets/images/frontend/banner/shape/02.png')"
+          alt="banner"
+        />
       </div>
       <div class="container">
         <div class="section-header">
@@ -329,7 +341,7 @@
                   <div class="post-thumb">
                     <a href="#">
                       <img
-                        src="@/assets/images/frontend/blog/01.jpg"
+                        v-lazy="require('@/assets/images/frontend/blog/01.jpg')"
                         alt="petuk-blog"
                       />
                     </a>
@@ -354,7 +366,9 @@
                     <div class="post-thumb">
                       <a href="#">
                         <img
-                          src="@/assets/images/frontend/blog/02.jpg"
+                          v-lazy="
+                            require('@/assets/images/frontend/blog/02.jpg')
+                          "
                           alt="petuk-blog"
                         />
                       </a>
@@ -372,7 +386,9 @@
                     <div class="post-thumb">
                       <a href="#">
                         <img
-                          src="@/assets/images/frontend/blog/03.jpg"
+                          v-lazy="
+                            require('@/assets/images/frontend/blog/03.jpg')
+                          "
                           alt="petuk-blog"
                         />
                       </a>
@@ -390,7 +406,9 @@
                     <div class="post-thumb">
                       <a href="#">
                         <img
-                          src="@/assets/images/frontend/blog/04.jpg"
+                          v-lazy="
+                            require('@/assets/images/frontend/blog/04.jpg')
+                          "
                           alt="petuk-blog"
                         />
                       </a>
@@ -408,7 +426,9 @@
                     <div class="post-thumb">
                       <a href="#">
                         <img
-                          src="@/assets/images/frontend/blog/05.jpg"
+                          v-lazy="
+                            require('@/assets/images/frontend/blog/05.jpg')
+                          "
                           alt="petuk-blog"
                         />
                       </a>

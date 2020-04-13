@@ -1,16 +1,5 @@
 <template>
   <div id="app">
-    <!-- preloader -->
-    <div class="preloader">
-      <div class="load loade">
-        <hr />
-        <hr />
-        <hr />
-        <hr />
-      </div>
-    </div>
-    <!-- preloader -->
-
     <!-- search area -->
     <div class="search-area">
       <div class="search-input">
@@ -30,7 +19,9 @@
       <nav class="mobile-header d-xl-none">
         <div class="header-logo">
           <a href="index-2.html" class="logo"
-            ><img src="@/assets/images/frontend/logo/01.png" alt="logo"
+            ><img
+              v-lazy="require('@/assets/images/frontend/logo/01.png')"
+              alt="logo"
           /></a>
         </div>
         <div class="header-bar">
@@ -92,7 +83,10 @@
         <div class="header-area">
           <div class="logo">
             <router-link :to="{ name: 'Home' }" tag="a" class="active">
-              <img src="@/assets/images/frontend/logo/01.png" alt="logo" />
+              <img
+                v-lazy="require('@/assets/images/frontend/logo/01.png')"
+                alt="logo"
+              />
             </router-link>
           </div>
           <div class="main-menu">
@@ -131,7 +125,9 @@
               <div class="cart-option">
                 <div class="cart-icon">
                   <img
-                    src="@/assets/images/frontend/header/cart-2.png"
+                    v-lazy="
+                      require('@/assets/images/frontend/header/cart-2.png')
+                    "
                     alt="shop-cart"
                   />
                 </div>
@@ -149,7 +145,9 @@
                             <div class="thumb">
                               <a href="#"
                                 ><img
-                                  src="@/assets/images/frontend/popular-food/01.jpg"
+                                  v-lazy="
+                                    require('@/assets/images/frontend/popular-food/01.jpg')
+                                  "
                                   alt=""
                               /></a>
                             </div>
@@ -186,7 +184,9 @@
                             <div class="thumb">
                               <a href="#"
                                 ><img
-                                  src="@/assets/images/frontend/popular-food/02.jpg"
+                                  v-lazy="
+                                    require('@/assets/images/frontend/popular-food/02.jpg')
+                                  "
                                   alt=""
                               /></a>
                             </div>
@@ -223,7 +223,9 @@
                             <div class="thumb">
                               <a href="#"
                                 ><img
-                                  src="@/assets/images/frontend/popular-food/03.jpg"
+                                  v-lazy="
+                                    require('@/assets/images/frontend/popular-food/03.jpg')
+                                  "
                                   alt=""
                               /></a>
                             </div>
@@ -260,7 +262,9 @@
                             <div class="thumb">
                               <a href="#"
                                 ><img
-                                  src="@/assets/images/frontend/popular-food/04.jpg"
+                                  v-lazy="
+                                    require('@/assets/images/frontend/popular-food/04.jpg')
+                                  "
                                   alt=""
                               /></a>
                             </div>
@@ -331,7 +335,9 @@
             <div class="footer-logo">
               <a href="index-2.html"
                 ><img
-                  src="@/assets/images/frontend/header/footer/01.png"
+                  v-lazy="
+                    require('@/assets/images/frontend/header/footer/01.png')
+                  "
                   alt="footer-logo"
               /></a>
             </div>

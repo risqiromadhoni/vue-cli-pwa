@@ -12,6 +12,7 @@ import "./frontend";
 // Plugin
 import "./plugins/bootstrap-vue";
 import "./plugins/swiper-vue";
+import "./plugins/lazyload-vue";
 
 Vue.config.productionTip = false;
 
