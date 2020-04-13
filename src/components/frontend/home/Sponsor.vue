@@ -3,11 +3,12 @@
     <swiper-slide v-for="img in swiperImg" :key="img">
       <div class="sponsor-item">
         <div class="sponsor-thumb">
-          <a href="#"
-            ><img
+          <a href="#">
+            <img
               :src="require(`@/assets/images/frontend/sponsor/0${img}.png`)"
               alt="food-sopnsor"
-          /></a>
+            />
+          </a>
         </div>
       </div>
     </swiper-slide>
@@ -49,10 +50,7 @@ export default {
     }
   },
   mounted() {
-    console.log("Current Swiper instance object", this.swiper);
     this.swiper.slideTo(3, 1000, false);
   }
 };
 </script>
-
-<style></style>

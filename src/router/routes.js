@@ -19,6 +19,16 @@ export const routes = [
         component: () => import("@/views/frontend/Blog")
       },
       {
+        path: "/login",
+        name: "Login",
+        component: () => import("@/views/frontend/SignIn")
+      },
+      {
+        path: "/register",
+        name: "Register",
+        component: () => import("@/views/frontend/SignUp")
+      },
+      {
         path: "*",
         name: "NotFound",
         component: () => import("@/views/frontend/404")
