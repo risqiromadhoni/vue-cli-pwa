@@ -11,6 +11,12 @@ module.exports = {
   pluginOptions: {
     moment: {
       locales: ["en", "id"]
+    },
+    i18n: {
+      locale: "id",
+      fallbackLocale: "id",
+      localeDir: "locales",
+      enableInSFC: false
     }
   },
 

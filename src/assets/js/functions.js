@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-$(window).on("load", function () {
+$(window).on("load", function() {
   $(".loade")
     .delay(2000)
     .fadeOut("slow");
@@ -23,13 +23,13 @@ $(".main-menu li ul")
   .addClass("dd-icon-right");
 
 // mobile menu responsive
-$(document).on("click", ".header-bar", function () {
+$(document).on("click", ".header-bar", function() {
   $(".header-bar").toggleClass("close");
   $(".menu").toggleClass("open");
 });
 
 //mobile drodown menu display
-$(".mobile-menu-area ul li a").on("click", function () {
+$(".mobile-menu-area ul li a").on("click", function() {
   var element = $(this).parent("li");
   if (element.hasClass("open")) {
     element.removeClass("open");
@@ -57,7 +57,7 @@ $(".mobile-menu-area ul li a").on("click", function () {
 // drop down menu width overflow problem fix
 $("ul")
   .parent()
-  .on("hover", function () {
+  .on("hover", function() {
     var menu = $(this).find("ul");
     var menupos = $(menu).offset();
     if (menupos.left + menu.width() > $(window).width()) {
@@ -69,8 +69,8 @@ $("ul")
   });
 
 // scroll up start here
-$(function () {
-  $(window).scroll(function () {
+$(function() {
+  $(window).scroll(function() {
     if ($(this).scrollTop() > 300) {
       $(".scrollToTop").css({
         bottom: "2%",
@@ -86,8 +86,9 @@ $(function () {
     }
   });
   //Click event to scroll to top
-  $(".scrollToTop").on("click", function () {
-    $("html, body").animate({
+  $(".scrollToTop").on("click", function() {
+    $("html, body").animate(
+      {
         scrollTop: 0
       },
       500
@@ -97,8 +98,8 @@ $(function () {
 });
 
 // product view mode change js
-$(function () {
-  $(".product-view-mode").on("click", "a", function (e) {
+$(function() {
+  $(".product-view-mode").on("click", "a", function(e) {
     e.preventDefault();
     var shopProductWrap = $(".shop-product-wrap");
     var viewMode = $(this).data("target");
@@ -109,7 +110,7 @@ $(function () {
 });
 
 // search & cart option
-$(document).on("click", ".search-start, .search-close", function () {
+$(document).on("click", ".search-start, .search-close", function() {
   $(".search-area").toggleClass("open");
 });
 
@@ -217,7 +218,7 @@ $(".counter").counterUp({
 var CartPlusMinus = $(".cart-plus-minus");
 CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
 CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-$(".qtybutton").on("click", function () {
+$(".qtybutton").on("click", function() {
   var $button = $(this);
   var oldValue = $button
     .parent()
