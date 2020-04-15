@@ -10,11 +10,12 @@ import store from "./store";
 import "./frontend";
 
 // Plugin
+import i18n from "./plugins/i18n";
 import "./plugins/bootstrap-vue";
 import "./plugins/swiper-vue";
 import "./plugins/lazyload-vue";
 import "./plugins/faker-vue";
-import i18n from "./plugins/i18n";
+import "./plugins/axios";
 
 Vue.config.productionTip = false;
 

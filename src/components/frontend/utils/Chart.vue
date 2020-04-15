@@ -1,7 +1,7 @@
 <template>
   <span>
-    <div class="count-item">{{ totalCarts.carts }}</div>
-    <div class="cart-content">
+    <div v-show="totalCarts.carts >= 1" class="count-item">{{ totalCarts.carts }}</div>
+    <div v-show="totalCarts.carts >= 1" class="cart-content">
       <div class="cart-title">
         <div class="add-item">{{ totalCarts.carts }} Items Added</div>
         <div class="list-close">
@@ -25,11 +25,13 @@
                 </div>
                 <div class="content">
                   <router-link tag="a" :to="{ name: 'Home' }">
-                    {{ cart.name }}
+                    {{
+                    cart.name
+                    }}
                   </router-link>
                 </div>
                 <div class="remove-btn">
-                  <a href="javascript:" @click="removeCart(cart.id)">
+                  <a href="javascript:" @click="removeCart(cart)">
                     <i class="icofont icofont-close"></i>
                   </a>
                 </div>
@@ -37,14 +39,14 @@
               <div class="cart-bottom">
                 <div class="sing-price">Tk. 00</div>
                 <div class="cart-plus-minus">
-                  <div class="dec qtybutton" @click="decQty(cart.id)">-</div>
+                  <div class="dec qtybutton" @click="decQty(cart)">-</div>
                   <input
                     class="cart-plus-minus-box"
                     type="text"
                     name="qtybutton"
                     v-model="cart.qty"
                   />
-                  <div class="inc qtybutton" @click="incQty(cart.id)">+</div>
+                  <div class="inc qtybutton" @click="incQty(cart)">+</div>
                 </div>
                 <div class="total-price">Tk. {{ cart.price }}</div>
               </div>
@@ -79,46 +81,30 @@
 export default {
   name: "ChartComponent",
   data() {
-    return {
-      carts: [],
-      totalCarts: {}
-    };
+    return {};
   },
   created() {
-    for (let i = 1; i < 5; i++) {
-      this.carts.push({
-        id: i,
-        name: this.$faker().commerce.productName(),
-        price: this.$faker().commerce.price(),
-        send: this.$faker().commerce.price(),
-        qty: i
-      });
+    this.$store.dispatch("setCarts");
+  },
+  computed: {
+    carts() {
+      return this.$store.getters.carts;
+    },
+    totalCarts() {
+      return this.$store.getters.totalCarts;
     }
-    this.totalCarts = {
-      total: this.carts
-        .map(el => parseInt(el.price))
-        .reduce((a, b) => a + b, 0),
-      carts: this.carts.length
-    };
   },
   methods: {
-    incQty: function(id) {
-      let arr = this.carts.find(el => el.id === id);
-      let qty = Math.round(arr.qty + 1);
-      return (arr.qty = qty);
+    incQty: function(data) {
+      data["activity"] = "inc";
+      return this.$store.dispatch("updateCart", data);
     },
-    decQty: function(id) {
-      let arr = this.carts.find(el => el.id === id);
-      if (arr.qty === 1) {
-        return this.carts.splice(arr, 1);
-      } else {
-        let qty = Math.round(arr.qty - 1);
-        return (arr.qty = qty);
-      }
+    decQty: function(data) {
+      data["activity"] = "dec";
+      return this.$store.dispatch("updateCart", data);
     },
-    removeCart: function(id) {
-      let arr = this.carts.find(el => el.id === id);
-      return this.carts.splice(arr, 1);
+    removeCart: function(data) {
+      return this.$store.dispatch("deleteCart", data);
     }
   }
 };
