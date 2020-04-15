@@ -1,5 +1,6 @@
 {
   "hello": "Hello Rounin",
   "message": "hello i18n !!",
-  "about": "Tentang Kami"
+  "about": "Tentang Kami",
+  "our_service": "Layanan Kami"
 }

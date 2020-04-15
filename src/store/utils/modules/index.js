@@ -1,5 +1,7 @@
 import userCart from "./userCart";
+import service from "./service";
 
 export default {
-  userCart
+  userCart,
+  service
 };

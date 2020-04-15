@@ -4,7 +4,7 @@
     <section class="banner style-2">
       <div class="banner-area">
         <div class="left-side">
-          <BannerSwiper />
+          <BannerSwiperComponent />
         </div>
         <div class="right-side">
           <div class="banner-content">
@@ -53,9 +53,9 @@
                   initate low risk high yeld platform aftering Conven iterate
                   optimal paradigms reliable techno
                 </p>
-                <a href="#" class="food-btn style-2"
-                  ><span>Read Our History</span></a
-                >
+                <a href="#" class="food-btn style-2">
+                  <span>Read Our History</span>
+                </a>
               </div>
             </div>
           </div>
@@ -75,81 +75,17 @@
     >
       <div class="container">
         <div class="section-header">
-          <h3>Layanan Kami</h3>
+          <h3>{{ $t("our_service") }}</h3>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div class="section-wrapper">
           <div id="burger" class="tabcontent">
             <div class="row no-gutters">
-              <div class="col-lg-4 col-12">
-                <div class="product-item style-2">
-                  <div class="product-thumb">
-                    <img
-                      v-lazy="
-                        require('@/assets/images/frontend/icons/02-icon-food.png')
-                      "
-                      alt="food-product"
-                    />
-                  </div>
-                  <div class="product-content">
-                    <div class="product-title">
-                      <h6><a href="#">Nasi Boks</a></h6>
-                    </div>
-                    <div class="product-desc">
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-12">
-                <div class="product-item style-2">
-                  <div class="product-thumb">
-                    <img
-                      v-lazy="
-                        require('@/assets/images/frontend/icons/04-icon-hotels-700x700.png')
-                      "
-                      alt="food-product"
-                    />
-                  </div>
-                  <div class="product-content">
-                    <div class="product-title">
-                      <h6><a href="#">Reservasi Tempat</a></h6>
-                    </div>
-                    <div class="product-desc">
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-12">
-                <div class="product-item style-2">
-                  <div class="product-thumb">
-                    <img
-                      v-lazy="
-                        require('@/assets/images/frontend/icons/03-icon-delivery-700x700.png')
-                      "
-                      alt="food-product"
-                    />
-                  </div>
-                  <div class="product-content">
-                    <div class="product-title">
-                      <h6><a href="#">Sedekah Nasi Boks</a></h6>
-                    </div>
-                    <div class="product-desc">
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ServiceBoxComponent
+                v-for="service in services"
+                :key="service.name"
+                :services="service"
+              />
             </div>
           </div>
         </div>
@@ -320,7 +256,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>-->
     <!-- Testimonial Section Ending Here -->
 
     <!-- Blog Section Start here -->
@@ -347,14 +283,18 @@
                     </a>
                   </div>
                   <div class="post-content">
-                    <h5><a href="#">Center What For Semicon Remoing.</a></h5>
+                    <h5>
+                      <a href="#">Center What For Semicon Remoing.</a>
+                    </h5>
                     <a href="#" class="date">22 December 2019</a>
                     <p>
                       Drama enable wordwid action team where Motin Was Proce
                       Aramin Raher Conven Cuvas rama enabe wordwd acton team
                       herea mnes Uroced Aran Manu Produ Raher Convene Cuva
                     </p>
-                    <a href="#" class="food-btn"><span>Read More</span></a>
+                    <a href="#" class="food-btn">
+                      <span>Read More</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -374,7 +314,9 @@
                       </a>
                     </div>
                     <div class="post-content">
-                      <h6><a href="#">Forin Semcon Remon..</a></h6>
+                      <h6>
+                        <a href="#">Forin Semcon Remon..</a>
+                      </h6>
                       <a href="#" class="date">22 December 2019</a>
                     </div>
                   </div>
@@ -394,7 +336,9 @@
                       </a>
                     </div>
                     <div class="post-content">
-                      <h6><a href="#">Forin Semcon Remon..</a></h6>
+                      <h6>
+                        <a href="#">Forin Semcon Remon..</a>
+                      </h6>
                       <a href="#" class="date">22 December 2019</a>
                     </div>
                   </div>
@@ -414,7 +358,9 @@
                       </a>
                     </div>
                     <div class="post-content">
-                      <h6><a href="#">Forin Semcon Remon..</a></h6>
+                      <h6>
+                        <a href="#">Forin Semcon Remon..</a>
+                      </h6>
                       <a href="#" class="date">22 December 2019</a>
                     </div>
                   </div>
@@ -434,7 +380,9 @@
                       </a>
                     </div>
                     <div class="post-content">
-                      <h6><a href="#">Forin Semcon Remon..</a></h6>
+                      <h6>
+                        <a href="#">Forin Semcon Remon..</a>
+                      </h6>
                       <a href="#" class="date">22 December 2019</a>
                     </div>
                   </div>
@@ -453,7 +401,7 @@
         <div class="section-wrapper">
           <div class="sponsor-slider">
             <!-- Sponsor Swiper Component -->
-            <Sponsor />
+            <SponsorComponent />
           </div>
         </div>
       </div>
@@ -465,13 +413,21 @@
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String,
-    nomor: String
+  data() {
+    return {};
   },
   components: {
-    Sponsor: () => import("@/components/frontend/home/Sponsor"),
-    BannerSwiper: () => import("@/components/frontend/home/Banner")
-  }
+    SponsorComponent: () => import("@/components/frontend/home/Sponsor"),
+    BannerSwiperComponent: () => import("@/components/frontend/home/Banner"),
+    ServiceBoxComponent: () => import("@/components/frontend/home/ServiceBox"),
+  },
+  created() {
+    this.$store.dispatch("setService");
+  },
+  computed: {
+    services() {
+      return this.$store.state.service.services;
+    },
+  },
 };
 </script>
