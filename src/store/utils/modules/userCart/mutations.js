@@ -12,7 +12,7 @@ export default {
   [UPDATE_CARTS](state, payload) {
     // Update Qty
     let arr = state.carts.find(el => el.id === payload.id);
-    if (payload.activity == 'inc') {
+    if (payload.activity == "inc") {
       let qty = Math.round(arr.qty + 1);
       return (arr.qty = qty);
     } else {

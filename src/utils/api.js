@@ -1,13 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Vue from "vue";
-import {
-  post,
-  get,
-  put,
-  del,
-  upload,
-  download
-} from "@/utils/httpHelper";
+import { post, get, put, del, upload, download } from "@/utils/httpHelper";
 
 export function getCart() {
   let carts = [];

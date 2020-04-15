@@ -1,6 +1,8 @@
 <template>
   <span>
-    <div v-show="totalCarts.carts >= 1" class="count-item">{{ totalCarts.carts }}</div>
+    <div v-show="totalCarts.carts >= 1" class="count-item">
+      {{ totalCarts.carts }}
+    </div>
     <div v-show="totalCarts.carts >= 1" class="cart-content">
       <div class="cart-title">
         <div class="add-item">{{ totalCarts.carts }} Items Added</div>
@@ -25,9 +27,7 @@
                 </div>
                 <div class="content">
                   <router-link tag="a" :to="{ name: 'Home' }">
-                    {{
-                    cart.name
-                    }}
+                    {{ cart.name }}
                   </router-link>
                 </div>
                 <div class="remove-btn">
