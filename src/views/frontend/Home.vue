@@ -94,18 +94,12 @@
     <!-- Food Product Section Style 2 Ending here -->
 
     <!-- Booking Table Section Start Here -->
-    <section class="booking-table padding-tb">
+    <!-- <section class="booking-table padding-tb">
       <div class="shape-1">
-        <img
-          v-lazy="require('@/assets/images/frontend/banner/shape/02.png')"
-          alt="banner"
-        />
+        <img v-lazy="require('@/assets/images/frontend/banner/shape/02.png')" alt="banner" />
       </div>
       <div class="shape-2">
-        <img
-          v-lazy="require('@/assets/images/frontend/banner/shape/02.png')"
-          alt="banner"
-        />
+        <img v-lazy="require('@/assets/images/frontend/banner/shape/02.png')" alt="banner" />
       </div>
       <div class="container">
         <div class="section-header">
@@ -145,11 +139,7 @@
                     </select>
                   </div>
                   <input type="date" name="time" data-provide="datepicker" />
-                  <textarea
-                    name="message"
-                    rows="6"
-                    placeholder="Message"
-                  ></textarea>
+                  <textarea name="message" rows="6" placeholder="Message"></textarea>
                   <button type="submit" class="food-btn style-2">
                     <span>book a table</span>
                   </button>
@@ -159,105 +149,8 @@
           </div>
         </div>
       </div>
-    </section>
-    <!-- Booking Table Section Ending Here -->
-
-    <!-- Testimonial Section Start Here -->
-    <!-- <section class="testimonial style-2 padding-tb">
-      <div class="container">
-        <div class="section-header">
-          <h3>Apa Kata Mereka?</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-        <div class="section-wrapper">
-          <div id="demo" class="carousel slide vert">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="testi-item">
-                  <div class="quite-icon">
-                    <i class="icofont icofont-quote-left"></i>
-                  </div>
-                  <p>
-                    Extend Accurate Services Long Term High Impact Experiences
-                    Interactiv Streamline Team Compelingly Simplify Solutions
-                    Before Technicaly Sound Leadership Skills Creative Holstic
-                    Process Improvements Proactively Streamline Alternative
-                    Niche Markets Forwor Resource Conveniently cultivate
-                    pandemic technology and corporate.
-                  </p>
-                  <h6>Somrat Islam <span>(UI Designer)</span></h6>
-                  <div class="rating">
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testi-item">
-                  <div class="quite-icon">
-                    <i class="icofont icofont-quote-left"></i>
-                  </div>
-                  <p>
-                    Extend Accurate Services Long Term High Impact Experiences
-                    Interactiv Streamline Team Compelingly Simplify Solutions
-                    Before Technicaly Sound Leadership Skills Creative Holstic
-                    Process Improvements Proactively Streamline Alternative
-                    Niche Markets Forwor Resource Conveniently cultivate
-                    pandemic technology and corporate.
-                  </p>
-                  <h6>Somrat Islam <span>(UI Designer)</span></h6>
-                  <div class="rating">
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testi-item">
-                  <div class="quite-icon">
-                    <i class="icofont icofont-quote-left"></i>
-                  </div>
-                  <p>
-                    Extend Accurate Services Long Term High Impact Experiences
-                    Interactiv Streamline Team Compelingly Simplify Solutions
-                    Before Technicaly Sound Leadership Skills Creative Holstic
-                    Process Improvements Proactively Streamline Alternative
-                    Niche Markets Forwor Resource Conveniently cultivate
-                    pandemic technology and corporate.
-                  </p>
-                  <h6>Somrat Islam <span>(UI Designer)</span></h6>
-                  <div class="rating">
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                    <i class="icofont icofont-star"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-indicators">
-              <div data-target="#demo" data-slide-to="0" class="item active">
-                <img src="@/assets/images/frontend/testimonial/01.jpg" alt="" />
-              </div>
-              <div data-target="#demo" data-slide-to="1" class="item">
-                <img src="@/assets/images/frontend/testimonial/02.jpg" alt="" />
-              </div>
-              <div data-target="#demo" data-slide-to="2" class="item">
-                <img src="@/assets/images/frontend/testimonial/03.jpg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>-->
-    <!-- Testimonial Section Ending Here -->
+    <!-- Booking Table Section Ending Here -->
 
     <!-- Blog Section Start here -->
     <section class="blog-section padding-tb" style="background-color: #fffaf4">
@@ -419,15 +312,15 @@ export default {
   components: {
     SponsorComponent: () => import("@/components/frontend/home/Sponsor"),
     BannerSwiperComponent: () => import("@/components/frontend/home/Banner"),
-    ServiceBoxComponent: () => import("@/components/frontend/home/ServiceBox"),
+    ServiceBoxComponent: () => import("@/components/frontend/home/ServiceBox")
   },
   created() {
     this.$store.dispatch("setService");
   },
   computed: {
     services() {
-      return this.$store.state.service.services;
-    },
-  },
+      return this.$store.getters.services;
+    }
+  }
 };
 </script>

@@ -1,13 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Vue from "vue";
-import {
-  post,
-  get,
-  put,
-  del,
-  upload,
-  download
-} from "@/utils/httpHelper";
+import { post, get, put, del, upload, download } from "@/utils/httpHelper";
 
 export function getCart() {
   let carts = [];
@@ -30,7 +23,7 @@ export function getService() {
     data.push({
       name: service[i],
       img: `icons/services-${i}.png`,
-      description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+      description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
     });
   }
   return data;

@@ -1,10 +1,10 @@
 <template>
-  <p>Backend</p>
+  <p>Register</p>
 </template>
 
 <script>
 export default {
-  name: "BackendView"
+  name: "RegisterAuth"
 };
 </script>
 

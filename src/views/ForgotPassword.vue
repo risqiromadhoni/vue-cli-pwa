@@ -1,10 +1,10 @@
 <template>
-  <p>Backend</p>
+  <p>Forgot Password</p>
 </template>
 
 <script>
 export default {
-  name: "BackendView"
+  name: "ForgotPasswordAuth"
 };
 </script>
 

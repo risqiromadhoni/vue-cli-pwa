@@ -2,13 +2,13 @@
   <section class="page-header">
     <div class="shape-1">
       <img
-        :src="require('@/assets/images/frontend/banner/shape/01.png')"
+        v-lazy="require('@/assets/images/frontend/banner/shape/01.png')"
         alt="banner"
       />
     </div>
     <div class="shape-2">
       <img
-        :src="require('@/assets/images/frontend/banner/shape/02.png')"
+        v-lazy="require('@/assets/images/frontend/banner/shape/02.png')"
         alt="banner"
       />
     </div>
@@ -17,9 +17,7 @@
         <h3>{{ title }}</h3>
         <ul class="breadcrumb">
           <li>
-            <router-link tag="a" :to="{ name: 'Home' }">
-              {{ sub1 }}
-            </router-link>
+            <router-link tag="a" :to="{ name: 'Home' }">{{ sub1 }}</router-link>
           </li>
           <li>{{ sub2 }}</li>
         </ul>

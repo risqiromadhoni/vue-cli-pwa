@@ -1,10 +1,10 @@
 <template>
-  <p>Backend</p>
+  <p>Verify Email</p>
 </template>
 
 <script>
 export default {
-  name: "BackendView"
+  name: "Email Verification"
 };
 </script>
 

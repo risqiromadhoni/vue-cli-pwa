@@ -1,10 +1,10 @@
 <template>
-  <p>Backend</p>
+  <p>Login</p>
 </template>
 
 <script>
 export default {
-  name: "BackendView"
+  name: "LoginAuth"
 };
 </script>
 

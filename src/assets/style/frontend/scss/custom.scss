@@ -1,0 +1,26 @@
+#nasi-boks {
+    &.booking-table {
+        .shape-1 {
+            bottom: 0;
+            right: 0;
+            display: block;
+            transform: none;
+        }
+
+        #step-order {
+            .list-group {
+                .list-group-item {
+                    span {
+                        &.text-circle {
+                            width: 73px;
+                            padding: 5px 14px;
+                            border-radius: 50%;
+                            background: #ff9800;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

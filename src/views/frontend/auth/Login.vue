@@ -1,11 +1,9 @@
 <template>
-  <p>Backend</p>
+  <p>Login</p>
 </template>
 
 <script>
-export default {
-  name: "BackendView"
-};
+export default {};
 </script>
 
 <style></style>
