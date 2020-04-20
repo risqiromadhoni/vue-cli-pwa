@@ -36,8 +36,11 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     WizardFormThree: async () => await import(`./WizardFormThree`)
   },
+  created() {
+    this.$Progress.start();
+  },
   mounted() {
-    console.log(this.dataForm);
+    this.$Progress.finish();
   },
   methods: {
     actionStep: function(param) {

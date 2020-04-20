@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <!-- set progressbar -->
+    <vue-progress-bar></vue-progress-bar>
     <!-- header section start -->
     <HeaderComponents />
     <!-- header section ending -->

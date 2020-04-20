@@ -17,6 +17,8 @@ import "./plugins/swiper-vue";
 import "./plugins/lazyload-vue";
 import "./plugins/faker-vue";
 import "./plugins/axios";
+import "./plugins/progress-vue";
+import "./plugins/select2-vue";
 
 Vue.config.productionTip = false;
 
@@ -25,7 +27,7 @@ for (let name in filters) {
   Vue.filter(name, filters[name]);
 }
 
-new Vue({
+export default new Vue({
   router,
   store,
   i18n,
