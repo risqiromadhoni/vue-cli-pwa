@@ -2,7 +2,7 @@
   <div class="section-wrapper">
     <ul class="tab-bar d-none d-md-flex">
       <li
-        v-for="step in dataForm.step"
+        v-for="step in dataForm"
         :key="step.component"
         :class="{ tablinks: true, active: step.isActive }"
         @click="actionStep(step.component)"
@@ -26,7 +26,7 @@ export default {
     };
   },
   props: {
-    dataForm: Object
+    dataForm: Array
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
@@ -45,7 +45,7 @@ export default {
   methods: {
     actionStep: function(param) {
       this.formPage = param;
-      this.dataForm.step.map(m => {
+      this.dataForm.map(m => {
         return m.component == this.formPage
           ? (m.isActive = true)
           : (m.isActive = false);

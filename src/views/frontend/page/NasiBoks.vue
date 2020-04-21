@@ -32,7 +32,7 @@ export default {
   name: "NasiBoksPage",
   data() {
     return {
-      wizardFormOrder: {}
+      wizardFormOrder: []
     };
   },
   components: {
@@ -41,30 +41,33 @@ export default {
   },
   created() {
     // Create Navigation
-    this.wizardFormOrder = {
-      step: [
-        {
-          name: "Step Satu",
-          img: svg1,
-          isActive: true,
-          component: "WizardFormOne"
-        },
-        {
-          name: "Step Dua",
-          img: svg2,
-          isActive: false,
-          component: "WizardFormTwo"
-        },
-        {
-          name: "Step Tiga",
-          img: svg3,
-          isActive: false,
-          component: "WizardFormThree"
-        }
-      ]
-    };
+    this.$store.dispatch("setOrderStep", [
+      {
+        name: "Step Satu",
+        img: svg1,
+        isActive: true,
+        component: "WizardFormOne",
+        isFinish: 0
+      },
+      {
+        name: "Step Dua",
+        img: svg2,
+        isActive: false,
+        component: "WizardFormTwo",
+        isFinish: 0
+      },
+      {
+        name: "Step Tiga",
+        img: svg3,
+        isActive: false,
+        component: "WizardFormThree",
+        isFinish: 0
+      }
+    ]);
     // this.wizardFormOrder.push(navStep);
   },
-  mounted() {}
+  mounted() {
+    this.wizardFormOrder = this.$store.state.order.step;
+  }
 };
 </script>

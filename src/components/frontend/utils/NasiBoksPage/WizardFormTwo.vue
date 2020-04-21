@@ -1,48 +1,47 @@
 <template>
   <b-row>
     <b-col sm>
-      <div>Two</div>
-    </b-col>
-    <b-col sm>
       <div class="contact-form">
-        <form action="https://www.foxcoders.com/">
-          <input type="text" name="name" placeholder="Full Name*" />
-          <input type="email" name="email" placeholder="Your Eamil*" />
-          <input type="text" name="number" placeholder="Phone Number" />
-          <div class="res-tab time-zone">
-            <select>
-              <option value="1">Enter Time</option>
-              <option value="2">10:00 AM</option>
-              <option value="3">11:00 AM</option>
-              <option value="4">12:00 PM</option>
-              <option value="5">01:00 PM</option>
-              <option value="6">02:00 PM</option>
-              <option value="7">03:00 PM</option>
-              <option value="8">04:00 PM</option>
-              <option value="9">05:00 PM</option>
-            </select>
-          </div>
-          <div class="res-tab table-zone">
-            <select>
-              <option value="1">Room Type</option>
-              <option value="2">Normal</option>
-              <option value="3">VIP</option>
-              <option value="4">VVIP</option>
-            </select>
-          </div>
-          <input type="date" name="time" data-provide="datepicker" />
-          <textarea name="message" rows="6" placeholder="Message"></textarea>
-          <button type="submit" class="food-btn style-2">
-            <span>book a table</span>
-          </button>
+        <form id="location-form" enctype="multipart/form-data">
+          <p class="h6 font-weight-bold">Pilih Kota :</p>
+          <v-select
+            label="name"
+            :options="regenciesOptions"
+            v-model="city"
+          ></v-select>
         </form>
       </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31733.640282183675!2d106.81369610193498!3d-6.170236196550788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f50f1bd7bfc9%3A0x6828e51e719c24bd!2sGraha%20Foodpedia%20Pasar%20Baru!5e0!3m2!1sid!2sid!4v1587368310704!5m2!1sid!2sid"
+        width="100%"
+        frameborder="0"
+        style="border:0;"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+      ></iframe>
     </b-col>
+    <b-col sm> </b-col>
   </b-row>
 </template>
 
 <script>
-export default {};
+import regencieData from "@/store/static/regencies";
+export default {
+  name: "WizardFormTwo",
+  data() {
+    return {
+      regenciesOptions: [],
+      city: {}
+    };
+  },
+  mounted() {
+    this.regenciesOptions = regencieData;
+  },
+  methods: {
+    saveLocation: async function() {
+      await console.log(this.provience);
+    }
+  }
+};
 </script>
-
-<style></style>

@@ -18,3 +18,9 @@ export const SET_SERVICE = "Set Service";
 export const UPDATE_SERVICE = "Update Service";
 export const DELETE_SERVICE = "Delete Service";
 export const ADD_SERVICE = "Add Service";
+
+// SUDA: Order
+export const SET_ORDER = "Order Service";
+export const UPDATE_ORDER = "Update Order";
+export const DELETE_ORDER = "Delete Order";
+export const ADD_ORDER = "Add Order";
