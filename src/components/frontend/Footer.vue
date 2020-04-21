@@ -5,14 +5,14 @@
       <div class="footer-top">
         <div class="footer-area text-center">
           <div class="footer-logo">
-            <a href="index-2.html">
+            <router-link tag="a" :to="{ name: 'Home' }">
               <img
                 v-lazy="
                   require('@/assets/images/frontend/header/footer/01.png')
                 "
                 alt="footer-logo"
               />
-            </a>
+            </router-link>
           </div>
           <div class="scocial-media">
             <a href="#" class="facebook">

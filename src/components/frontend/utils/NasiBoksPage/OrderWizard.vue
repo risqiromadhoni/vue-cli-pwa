@@ -34,7 +34,9 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     WizardFormTwo: async () => await import(`./WizardFormTwo`),
     // eslint-disable-next-line vue/no-unused-components
-    WizardFormThree: async () => await import(`./WizardFormThree`)
+    WizardFormThree: async () => await import(`./WizardFormThree`),
+    // eslint-disable-next-line vue/no-unused-components
+    WizardFormFour: async () => await import(`./WizardFormFour`)
   },
   created() {
     this.$Progress.start();

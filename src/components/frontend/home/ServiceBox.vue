@@ -11,9 +11,9 @@
       <div class="product-content">
         <div class="product-title">
           <h6>
-            <router-link tag="a" :to="{ name: services.route }">
-              {{ services.name | capitalize }}
-            </router-link>
+            <router-link tag="a" :to="{ name: services.route }">{{
+              services.name | capitalize
+            }}</router-link>
           </h6>
         </div>
         <div class="product-desc">

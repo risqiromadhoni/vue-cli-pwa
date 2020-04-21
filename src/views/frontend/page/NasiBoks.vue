@@ -28,6 +28,7 @@
 import svg1 from "@/assets/images/frontend/svg/step-circle-1.svg";
 import svg2 from "@/assets/images/frontend/svg/step-circle-2.svg";
 import svg3 from "@/assets/images/frontend/svg/step-circle-3.svg";
+import svg4 from "@/assets/images/frontend/svg/step-circle-4.svg";
 export default {
   name: "NasiBoksPage",
   data() {
@@ -43,24 +44,31 @@ export default {
     // Create Navigation
     this.$store.dispatch("setOrderStep", [
       {
-        name: "Step Satu",
+        name: "Restoran",
         img: svg1,
         isActive: true,
         component: "WizardFormOne",
         isFinish: 0
       },
       {
-        name: "Step Dua",
+        name: "Makanan & Minuman",
         img: svg2,
         isActive: false,
         component: "WizardFormTwo",
         isFinish: 0
       },
       {
-        name: "Step Tiga",
+        name: "Jadwal",
         img: svg3,
         isActive: false,
         component: "WizardFormThree",
+        isFinish: 0
+      },
+      {
+        name: "Pembayaran",
+        img: svg4,
+        isActive: false,
+        component: "WizardFormFour",
         isFinish: 0
       }
     ]);

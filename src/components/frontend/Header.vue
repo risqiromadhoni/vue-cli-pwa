@@ -18,12 +18,12 @@
     <div class="mobile-menu">
       <nav class="mobile-header d-xl-none">
         <div class="header-logo">
-          <a href="index-2.html" class="logo">
+          <router-link tag="a" :to="{ name: 'Home' }">
             <img
               v-lazy="require('@/assets/images/frontend/logo/01.png')"
               alt="logo"
             />
-          </a>
+          </router-link>
         </div>
         <div class="header-bar">
           <span></span>
@@ -42,9 +42,9 @@
             </div>
             <ul>
               <li>
-                <router-link :to="{ name: 'About' }" tag="a">
-                  {{ $t("about") }}
-                </router-link>
+                <router-link :to="{ name: 'About' }" tag="a">{{
+                  $t("about")
+                }}</router-link>
               </li>
               <li>
                 <a href="#0">Layanan Kami</a>
@@ -105,9 +105,9 @@
           <div class="main-menu">
             <ul>
               <li>
-                <router-link :to="{ name: 'About' }" tag="a">
-                  {{ $t("about") }}
-                </router-link>
+                <router-link :to="{ name: 'About' }" tag="a">{{
+                  $t("about")
+                }}</router-link>
               </li>
               <li>
                 <a href="#0">Layanan Kami</a>

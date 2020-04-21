@@ -1183,8 +1183,12 @@ aside {
   transition: all 0.3s ease;
 }
 
-.p-food-item .p-food-inner:hover .p-food-thumb img {
-  transform: scale(1.1);
+.p-food-item .p-food-inner:hover {
+  border: 2px solid #ff9800;
+
+  .p-food-thumb img {
+    transform: scale(1.1);
+  }
 }
 
 .p-food-item .p-food-inner .p-food-thumb {
@@ -1384,11 +1388,11 @@ aside {
   }
 }
 
-@media (min-width: 768px) {
-  .p-food-item .p-food-inner .p-food-content .p-food-footer .right {
-    text-align: right;
-  }
-}
+// @media (min-width: 768px) {
+//   .p-food-item .p-food-inner .p-food-content .p-food-footer .right {
+//     text-align: right;
+//   }
+// }
 
 .p-food-item .p-food-inner .p-food-content .p-food-footer .right i {
   color: #555555;
@@ -5568,13 +5572,13 @@ aside {
   padding: 13px 15px;
 }
 
-@media (min-width: 576px) {
+// @media (min-width: 576px) {
 
-  .booking-table .section-wrapper form input,
-  .booking-table .section-wrapper form .res-tab {
-    width: calc(100% / 2 - 15px);
-  }
-}
+//   .booking-table .section-wrapper form input,
+//   .booking-table .section-wrapper form .res-tab {
+//     width: calc(100% / 2 - 15px);
+//   }
+// }
 
 .booking-table .section-wrapper form textarea {
   width: 100%;
