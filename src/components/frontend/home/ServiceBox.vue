@@ -1,6 +1,6 @@
 <template>
   <b-col sm>
-    <div class="product-item style-2">
+    <div @click="detailService" class="product-item style-2">
       <div class="product-thumb">
         <img
           v-lazy="require(`@/assets/images/frontend/${services.img}`)"
@@ -29,6 +29,11 @@ export default {
   name: "ServiceBoxComponent",
   props: {
     services: Object
+  },
+  methods: {
+    detailService: function() {
+      return this.$router.push({ name: this.services.route });
+    }
   }
 };
 </script>

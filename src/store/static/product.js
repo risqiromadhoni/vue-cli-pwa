@@ -15,6 +15,7 @@ let data = [];
 for (let i = 0; i < 12; i++) {
   let typep = type[Math.floor(Math.random() * type.length)];
   data.push({
+    id: Math.floor(i + 1),
     name: Vue.faker().commerce.productName(),
     price: Vue.faker().commerce.price(),
     price_disk: Vue.faker().commerce.price(),

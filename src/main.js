@@ -19,6 +19,7 @@ import "./plugins/faker-vue";
 import "./plugins/axios";
 import "./plugins/progress-vue";
 import "./plugins/select2-vue";
+import "./plugins/calendar-vue";
 
 Vue.config.productionTip = false;
 
