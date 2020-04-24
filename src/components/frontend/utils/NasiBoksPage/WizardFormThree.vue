@@ -101,13 +101,7 @@ export default {
       };
     }
   },
-  mounted() {
-    console.log(
-      moment()
-        .subtract(1, "days")
-        .format("DD/MM/YYYY")
-    );
-  },
+  mounted() {},
   methods: {
     modalOrderUser: function() {
       alert("modal");

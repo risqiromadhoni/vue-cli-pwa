@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     saveLocation: async function() {
-      await console.log(this.provience);
+      await alert("two");
     },
     loadProduct: function() {
       return this.product.concat(products);

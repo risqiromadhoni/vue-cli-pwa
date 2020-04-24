@@ -104,5 +104,11 @@ export default {
       return value.toString().replace(replace, replaced);
     }
     return "";
+  },
+  intToIdr: value => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR"
+    }).format(value);
   }
 };

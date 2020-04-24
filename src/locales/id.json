@@ -2,5 +2,15 @@
   "hello": "Hello Rounin",
   "message": "hello i18n !!",
   "about": "Tentang Kami",
-  "our_service": "Layanan Kami"
+  "our_service": "Layanan Kami",
+  "date": "Tanggal",
+  "outlet": "Outlet",
+  "long_subscription": "Lama berlangganan",
+  "total_payment": "Total Pembayaran",
+  "invoice": "Invoice",
+  "ppn": "PPN",
+  "total_price": "Harga Total",
+  "name": "nama",
+  "telp": "telphone",
+  "address": "Alamat"
 }

@@ -109,3 +109,17 @@ export function replace(value, replace, replaced) {
   }
   return "";
 }
+
+export function randString(length = 6) {
+  return Math.random()
+    .toString(20)
+    .toUpperCase()
+    .substr(2, length);
+}
+
+export function intToIdr(value) {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR"
+  }).format(value);
+}
