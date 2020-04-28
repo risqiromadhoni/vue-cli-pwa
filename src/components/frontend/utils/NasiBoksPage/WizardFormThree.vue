@@ -13,12 +13,7 @@
         </b-list-group>
       </b-form-group>
       <!-- Modal -->
-      <b-modal
-        v-model="addressCustomer"
-        id="modal-address"
-        centered
-        title="Biodata Pemesan"
-      >
+      <b-modal v-model="addressCustomer" id="modal-address" centered title="Biodata Pemesan">
         <p class="my-4">Biodata Pemesan</p>
         <template v-slot:modal-footer>
           <div class="w-100">
@@ -28,8 +23,7 @@
               size="sm"
               class="float-right"
               @click="addressCustomer = false"
-              >Close</b-button
-            >
+            >Close</b-button>
           </div>
         </template>
       </b-modal>
@@ -45,12 +39,7 @@
         </b-list-group>
       </b-form-group>
       <!-- Modal -->
-      <b-modal
-        v-model="addressModal"
-        id="modal-address"
-        centered
-        title="Alamat Penerima"
-      >
+      <b-modal v-model="addressModal" id="modal-address" centered title="Alamat Penerima">
         <p class="my-4">Alamat Penerima</p>
         <template v-slot:modal-footer>
           <div class="w-100">
@@ -60,8 +49,7 @@
               size="sm"
               class="float-right"
               @click="addressModal = false"
-              >Close</b-button
-            >
+            >Close</b-button>
           </div>
         </template>
       </b-modal>
@@ -76,6 +64,14 @@
       <b-card>
         <code>{{ range }}</code>
       </b-card>
+    </b-col>
+    <b-col cols="12" class="my-3">
+      <div class="d-block">
+        <b-button pill variant="outline-warning" class="float-right">
+          <span class="pr-3">{{$t("next") | capitalize}}</span>
+          <i class="icofont icofont-arrow-right"></i>
+        </b-button>
+      </div>
     </b-col>
   </b-row>
 </template>

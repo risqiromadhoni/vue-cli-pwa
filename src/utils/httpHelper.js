@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 
-export const baseApiUrl = "/";
+export const baseApiUrl = process.env.VUE_APP_API_URL || "";
 export const baseWebUrl = "/";
 const GET_TIMEOUT = 20000;
 const POST_TIMEOUT = 120000;
@@ -85,12 +85,13 @@ export function commonHttpErrorHandler(error, showErrorNotification) {
   }
 
   // eslint-disable-next-line no-empty
-  if (showErrorNotification) {
-  }
+  if (showErrorNotification) {}
   throw errorMessage;
 }
 
-export function commonHttpSuccessHandler(start, { data }) {
+export function commonHttpSuccessHandler(start, {
+  data
+}) {
   if (data && !data.errors) {
     return data;
   }
@@ -108,16 +109,18 @@ export function get({
   showErrorNotification = true
 }) {
   return axios({
-    url: baseApiUrl + path,
-    method: "GET",
-    params,
-    headers: {
-      ...getHeader(false, useAuthHeader, bearerTokenOverride),
-      Accept: acceptHeader
-    },
-    timeout: GET_TIMEOUT
-  })
-    .then(({ data }) => {
+      url: baseApiUrl + path,
+      method: "GET",
+      params,
+      headers: {
+        ...getHeader(false, useAuthHeader, bearerTokenOverride),
+        Accept: acceptHeader
+      },
+      timeout: GET_TIMEOUT
+    })
+    .then(({
+      data
+    }) => {
       if (data.data && !data.errors) {
         if (cacheConfig != null) {
           // eslint-disable-next-line no-undef
@@ -186,17 +189,21 @@ export function del({
 }) {
   const start = Date.now();
   return axios({
-    url: baseApiUrl + path,
-    method: "delete",
-    params,
-    headers: getHeader(isMultipartForm, useAuthHeader),
-    timeout: POST_TIMEOUT
-  })
+      url: baseApiUrl + path,
+      method: "delete",
+      params,
+      headers: getHeader(isMultipartForm, useAuthHeader),
+      timeout: POST_TIMEOUT
+    })
     .then(response => commonHttpSuccessHandler(start, response))
     .catch(error => commonHttpErrorHandler(error, showErrorNotification));
 }
 
-export function upload({ path, bodyFormData, useAuthHeader = true }) {
+export function upload({
+  path,
+  bodyFormData,
+  useAuthHeader = true
+}) {
   const start = Date.now();
   return axios
     .post(baseApiUrl + path, bodyFormData, {
@@ -215,14 +222,14 @@ export function download({
 }) {
   // const start = Date.now();
   return axios({
-    baseURL: baseApiUrl + path,
-    path,
-    method,
-    params,
-    headers: getHeader(false, useAuthHeader),
-    timeout: DOWNLOAD_TIMEOUT,
-    responseType: "blob"
-  })
+      baseURL: baseApiUrl + path,
+      path,
+      method,
+      params,
+      headers: getHeader(false, useAuthHeader),
+      timeout: DOWNLOAD_TIMEOUT,
+      responseType: "blob"
+    })
     .then(response => {
       // reportTrackTiming(start, response);
       const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));

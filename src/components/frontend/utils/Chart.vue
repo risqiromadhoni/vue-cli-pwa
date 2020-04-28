@@ -1,8 +1,6 @@
 <template>
   <span>
-    <div v-show="totalCarts.carts >= 1" class="count-item">
-      {{ totalCarts.carts }}
-    </div>
+    <div v-show="totalCarts.carts >= 1" class="count-item">{{ totalCarts.carts }}</div>
     <div v-show="totalCarts.carts >= 1" class="cart-content">
       <div class="cart-title">
         <div class="add-item">{{ totalCarts.carts }} Items Added</div>
@@ -26,9 +24,7 @@
                   </router-link>
                 </div>
                 <div class="content">
-                  <router-link tag="a" :to="{ name: 'Home' }">
-                    {{ cart.name }}
-                  </router-link>
+                  <router-link tag="a" :to="{ name: 'Home' }">{{ cart.name }}</router-link>
                 </div>
                 <div class="remove-btn">
                   <a href="javascript:" @click="removeCart(cart)">
@@ -84,7 +80,7 @@ export default {
     return {};
   },
   created() {
-    this.$store.dispatch("setCarts");
+    // this.$store.dispatch("setCarts");
   },
   computed: {
     carts() {

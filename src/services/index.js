@@ -1,13 +1,5 @@
-"use strict";
-
-import Vue from "vue";
 import axios from "axios";
-import app from "../main";
-
-// Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = process.env.VUE_APP_API_URL;
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
+import app from "@/main";
 
 let config = {
   baseURL: process.env.VUE_APP_API_URL || ""
@@ -63,25 +55,3 @@ _axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-// eslint-disable-next-line no-unused-vars
-Plugin.install = function (Vue, options) {
-  Vue.axios = _axios;
-  window.axios = _axios;
-  Object.defineProperties(Vue.prototype, {
-    axios: {
-      get() {
-        return _axios;
-      }
-    },
-    $axios: {
-      get() {
-        return _axios;
-      }
-    }
-  });
-};
-
-Vue.use(Plugin);
-
-export default Plugin;

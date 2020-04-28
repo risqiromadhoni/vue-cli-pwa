@@ -5,13 +5,22 @@ import {
   DELETE_SERVICE,
   ADD_SERVICE
 } from "@/store/utils/mutations";
-import { getService } from "@/utils/api";
+import {
+  getService
+} from "@/utils/api";
 
 export default {
-  async setService({ commit }) {
+  async setService({
+    commit
+  }) {
     await new Promise((resolve, reject) => {
-      commit(SET_SERVICE, getService());
-      resolve(getService());
+      getService()
+        .then((result) => {
+          commit(SET_SERVICE, result);
+          resolve(result);
+        }).catch((err) => {
+          reject(err);
+        });
     });
   }
 };

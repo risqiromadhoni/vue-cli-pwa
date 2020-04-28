@@ -1,17 +1,31 @@
 <template>
   <b-row>
-    <div class="popular-foods">
+    <div class="popular-foods pb-0">
       <b-row>
+        <b-col cols="12" class="mb-3 d-md-none d-sm-flex">
+          <b-row align-v="center">
+            <b-col cols="4">
+              <div class="font-weight-bold">
+                <i class="h4 icofont icofont-arrow-left"></i>
+              </div>
+            </b-col>
+            <b-col cols="8">
+              <div class="h5 font-weight-light">{{$t("food_and_drink") | capitalize}}</div>
+            </b-col>
+          </b-row>
+        </b-col>
         <b-col md="4" v-for="p in product" :key="p.name">
           <ProductBox :product="p" />
         </b-col>
+        <b-col cols="12" class="my-3">
+          <div class="d-block">
+            <b-button pill variant="outline-warning" class="float-right">
+              <span class="pr-3">{{$t("next") | capitalize}}</span>
+              <i class="icofont icofont-arrow-right"></i>
+            </b-button>
+          </div>
+        </b-col>
       </b-row>
-      <div :id="$style.loadMore" class="h6">
-        <b-button @click="loadProduct" pill variant="outline-warning">
-          <i class="icofont icofont-spinner-alt-5"></i>
-          Load More
-        </b-button>
-      </div>
     </div>
   </b-row>
 </template>

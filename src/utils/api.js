@@ -1,6 +1,14 @@
 /* eslint-disable no-unused-vars */
 import Vue from "vue";
-import { post, get, put, del, upload, download } from "@/utils/httpHelper";
+import {
+  post,
+  get,
+  put,
+  del,
+  upload,
+  download
+} from "@/utils/httpHelper";
+import app from "../main";
 
 export function getCart() {
   let carts = [];
@@ -17,14 +25,7 @@ export function getCart() {
 }
 
 export function getService() {
-  let data = [];
-  const service = ["Nasi Boks", "Reservasi Tempat", "Sedekah Nasi Boks"];
-  for (let i = 0; i < service.length; i++) {
-    data.push({
-      name: service[i],
-      img: `icons/services-${i}.png`,
-      description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
-    });
-  }
-  return data;
+  return app.$axios.get({
+    path: "/service"
+  });
 }

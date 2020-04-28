@@ -11,10 +11,7 @@
       <div class="p-food-content">
         <div class="p-food-author">
           <a href="#">
-            <img
-              :src="require('@/assets/images/frontend/chef/author/02.jpg')"
-              alt="food-author"
-            />
+            <img :src="require('@/assets/images/frontend/chef/author/02.jpg')" alt="food-author" />
           </a>
         </div>
         <h6>
@@ -31,13 +28,11 @@
             <i class="icofont icofont-box"></i>
             <div class="time-tooltip">
               <div class="time-tooltip-holder">
-                <span class="tooltip-label">
-                  {{ "Dikemas" | capitalize }}
-                </span>
+                <span class="tooltip-label">{{ "Dikemas" | capitalize }}</span>
                 <span class="tooltip-info">
                   {{
-                    "Dengan plastik BPA sebagai wadah standart makanan atau minuman"
-                      | capitalize
+                  "Dengan plastik BPA sebagai wadah standart makanan atau minuman"
+                  | capitalize
                   }}
                 </span>
               </div>
@@ -47,12 +42,8 @@
             <i :class="'icofont ' + iconType(product.type)"></i>
             <div class="time-tooltip">
               <div class="time-tooltip-holder">
-                <span class="tooltip-label">
-                  {{ product.type | capitalize }}
-                </span>
-                <span class="tooltip-info">
-                  {{ `Enjoy your ${product.type}` | capitalize }}
-                </span>
+                <span class="tooltip-label">{{ product.type | capitalize }}</span>
+                <span class="tooltip-info">{{ `Enjoy your ${product.type}` | capitalize }}</span>
               </div>
             </div>
           </li>
@@ -103,20 +94,6 @@ export default {
     span {
       color: #ff9800 !important;
     }
-  }
-}
-.pFoodItemActive {
-  &::before {
-    content: "Before";
-    width: 100px;
-    height: 10px;
-    background-color: black;
-  }
-  &::after {
-    content: "After";
-    width: 100px;
-    height: 10px;
-    background-color: black;
   }
 }
 </style>

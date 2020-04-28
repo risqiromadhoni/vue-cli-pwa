@@ -12,5 +12,8 @@
   "total_price": "Harga Total",
   "name": "nama",
   "telp": "telphone",
-  "address": "Alamat"
+  "address": "Alamat",
+  "food_and_drink": "Makanan & Minuman",
+  "loadmore": "Lebih banyak",
+  "next": "berikutnya"
 }
