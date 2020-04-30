@@ -10,7 +10,9 @@
               </div>
             </b-col>
             <b-col cols="8">
-              <div class="h5 font-weight-light">{{$t("food_and_drink") | capitalize}}</div>
+              <div class="h5 font-weight-light">
+                {{ $t("food_and_drink") | capitalize }}
+              </div>
             </b-col>
           </b-row>
         </b-col>
@@ -20,7 +22,7 @@
         <b-col cols="12" class="my-3">
           <div class="d-block">
             <b-button pill variant="outline-warning" class="float-right">
-              <span class="pr-3">{{$t("next") | capitalize}}</span>
+              <span class="pr-3">{{ $t("next") | capitalize }}</span>
               <i class="icofont icofont-arrow-right"></i>
             </b-button>
           </div>

@@ -30,7 +30,11 @@
           <template v-slot:footer>
             <em>Invoice : FPD-{{ invoice }}</em>
             <span :class="$style.copyInvoice">
-              <i class="icofont icofont-ui-copy" v-b-tooltip.hover title="Salin Invoice"></i>
+              <i
+                class="icofont icofont-ui-copy"
+                v-b-tooltip.hover
+                title="Salin Invoice"
+              ></i>
             </span>
           </template>
         </b-card>
@@ -53,7 +57,11 @@
           <div>
             <b-row class="align-items-center">
               <b-col cols="4">
-                <b-img-lazy fluid :src="require('@/assets/images/frontend/logo/01.png')" alt="logo"></b-img-lazy>
+                <b-img-lazy
+                  fluid
+                  :src="require('@/assets/images/frontend/logo/01.png')"
+                  alt="logo"
+                ></b-img-lazy>
               </b-col>
               <b-col cols="6">
                 <p class="font-weight-bold m-0">Foodpedia Jakarta</p>
@@ -72,7 +80,12 @@
               <li>
                 <a>
                   {{ new Date() | date("DD MMMM YYYY") }}
-                  <b-badge pill variant="light" v-b-tooltip.hover title="Hari Ke - 1">
+                  <b-badge
+                    pill
+                    variant="light"
+                    v-b-tooltip.hover
+                    title="Hari Ke - 1"
+                  >
                     <i class="icofont icofont-calendar"></i>
                     1
                   </b-badge>
@@ -80,9 +93,7 @@
                 <p>
                   Hari ke 1 Pesanan anda di antar pukul 11:00. Bila ada
                   pertanyaan silahkan hubungi
-                  <a
-                    href="tel:+62331725998"
-                  >
+                  <a href="tel:+62331725998">
                     <em>customer service</em>
                   </a>
                   kami.
@@ -91,7 +102,12 @@
               <li>
                 <a>
                   {{ new Date() | date("DD MMMM YYYY") }}
-                  <b-badge pill variant="light" v-b-tooltip.hover title="Hari Ke - 13">
+                  <b-badge
+                    pill
+                    variant="light"
+                    v-b-tooltip.hover
+                    title="Hari Ke - 13"
+                  >
                     <i class="icofont icofont-calendar"></i>
                     13
                   </b-badge>
@@ -99,9 +115,7 @@
                 <p>
                   Hari ke 13 Pesanan anda di antar pukul 11:00. Bila ada
                   pertanyaan silahkan hubungi
-                  <a
-                    href="tel:+62331725998"
-                  >
+                  <a href="tel:+62331725998">
                     <em>customer service</em>
                   </a>
                   kami.
@@ -150,19 +164,25 @@
                       v-b-tooltip.hover
                       title="Klik untuk telpon secara redirect"
                     >
-                      <i class="icofont icofont-external-link pr-1 text-success"></i>
+                      <i
+                        class="icofont icofont-external-link pr-1 text-success"
+                      ></i>
                       {{ item }}
                     </a>
                     <a
                       v-else-if="key == 'address'"
                       :href="
-                        `https://www.google.com/maps/search/?api=1&query=${encodeURI(item)}`
+                        `https://www.google.com/maps/search/?api=1&query=${encodeURI(
+                          item
+                        )}`
                       "
                       target="_blank"
                       v-b-tooltip.hover
                       title="Klik untuk mencari alamat di google maps"
                     >
-                      <i class="icofont icofont-external-link pr-1 text-success"></i>
+                      <i
+                        class="icofont icofont-external-link pr-1 text-success"
+                      ></i>
                       {{ item }}
                     </a>
                     <span v-else>{{ item | capitalize }}</span>
@@ -190,7 +210,11 @@
             <span class="mr-auto h6 text-dark">Rincian Harga</span>
           </template>
           <div>
-            <b-row v-for="(item, key) in invPrice.item" :key="key" class="align-items-center">
+            <b-row
+              v-for="(item, key) in invPrice.item"
+              :key="key"
+              class="align-items-center"
+            >
               <b-col>
                 <div>
                   <p class="m-0">{{ item.name }}</p>
@@ -213,19 +237,25 @@
               </b-col>
               <b-col>
                 <div>
-                  <p class="text-right font-weight-light">{{ invPrice.global.ppn }}</p>
+                  <p class="text-right font-weight-light">
+                    {{ invPrice.global.ppn }}
+                  </p>
                 </div>
               </b-col>
             </b-row>
             <b-row class="align-items-center">
               <b-col>
                 <div>
-                  <p class="m-0 font-weight-bold">{{ $t("total_price") | capitalize }}</p>
+                  <p class="m-0 font-weight-bold">
+                    {{ $t("total_price") | capitalize }}
+                  </p>
                 </div>
               </b-col>
               <b-col>
                 <div>
-                  <p class="text-right font-weight-bold">{{ invPrice.global.total_price }}</p>
+                  <p class="text-right font-weight-bold">
+                    {{ invPrice.global.total_price }}
+                  </p>
                 </div>
               </b-col>
             </b-row>

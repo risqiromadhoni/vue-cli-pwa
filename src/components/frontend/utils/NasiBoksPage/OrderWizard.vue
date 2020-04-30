@@ -5,9 +5,8 @@
         v-for="step in dataForm"
         :key="step.component"
         :class="{ tablinks: true, active: step.isActive }"
-        @click="actionStep(step.component)"
       >
-        <img v-lazy="step.img" alt="food-product" />
+        <img :src="imgTop(step)" alt="food-product" />
         <span>{{ step.name | capitalize }}</span>
       </li>
     </ul>
@@ -18,15 +17,14 @@
 </template>
 
 <script>
+import finish from "@/assets/images/frontend/svg/step-circle-checked.svg";
 export default {
   name: "OrderFormWizard",
   data() {
     return {
-      formPage: "WizardFormOne"
+      formPage: "WizardFormOne",
+      dataForm: []
     };
-  },
-  props: {
-    dataForm: Array
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
@@ -39,19 +37,12 @@ export default {
     WizardFormFour: async () => await import(`./WizardFormFour`)
   },
   created() {
-    this.$Progress.start();
-  },
-  mounted() {
-    this.$Progress.finish();
+    this.dataForm = this.$store.state.order.step;
   },
   methods: {
-    actionStep: function(param) {
-      this.formPage = param;
-      this.dataForm.map(m => {
-        return m.component == this.formPage
-          ? (m.isActive = true)
-          : (m.isActive = false);
-      });
+    imgTop: function(params) {
+      if (!params.isFinish) return params.img;
+      else return finish;
     }
   }
 };

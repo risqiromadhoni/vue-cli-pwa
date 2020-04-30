@@ -3,17 +3,17 @@
     <div @click="detailService" class="product-item style-2">
       <div class="product-thumb">
         <img
-          v-lazy="require(`@/assets/images/frontend/${services.img}`)"
+          v-lazy="require(`@/assets/images/frontend/${services.images}`)"
           :alt="services.slug"
-          :title="services.name"
+          :title="services.title"
         />
       </div>
       <div class="product-content">
         <div class="product-title">
           <h6>
-            <router-link tag="a" :to="{ name: services.route }">{{
-              services.name | capitalize
-            }}</router-link>
+            <router-link tag="a" :to="{ name: services.route }">
+              {{ services.title | capitalize }}
+            </router-link>
           </h6>
         </div>
         <div class="product-desc">

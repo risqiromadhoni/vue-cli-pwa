@@ -48,28 +48,28 @@ export default {
         img: svg1,
         isActive: true,
         component: "WizardFormOne",
-        isFinish: 0
+        isFinish: false
       },
       {
         name: "Makanan & Minuman",
         img: svg2,
         isActive: false,
         component: "WizardFormTwo",
-        isFinish: 0
+        isFinish: false
       },
       {
         name: "Jadwal",
         img: svg3,
         isActive: false,
         component: "WizardFormThree",
-        isFinish: 0
+        isFinish: false
       },
       {
         name: "Pembayaran",
         img: svg4,
         isActive: false,
         component: "WizardFormFour",
-        isFinish: 0
+        isFinish: false
       }
     ]);
     // this.wizardFormOrder.push(navStep);

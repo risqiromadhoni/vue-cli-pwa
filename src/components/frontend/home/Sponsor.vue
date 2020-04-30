@@ -30,12 +30,12 @@ export default {
         },
         breakpoints: {
           992: {
-            slidesPerView: 4
+            slidesPerView: 6
           },
           576: {
-            slidesPerView: 3
+            slidesPerView: 4
           },
-          400: {
+          300: {
             slidesPerView: 2
           }
         },

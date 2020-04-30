@@ -1,13 +1,5 @@
 /* eslint-disable no-unused-vars */
 import Vue from "vue";
-import {
-  post,
-  get,
-  put,
-  del,
-  upload,
-  download
-} from "@/utils/httpHelper";
 import app from "../main";
 
 export function getCart() {

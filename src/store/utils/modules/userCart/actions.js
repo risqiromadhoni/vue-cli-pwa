@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {
-  getCart
-} from "@/utils/api";
+import { getCart } from "@/utils/api";
 import {
   SET_CARTS,
   UPDATE_CARTS,
@@ -10,9 +8,7 @@ import {
 } from "@/store/utils/mutations";
 
 export default {
-  async setCarts({
-    commit
-  }) {
+  async setCarts({ commit }) {
     await new Promise((resolve, reject) => {
       // getCart()
       //   .then(res => {
@@ -26,25 +22,19 @@ export default {
       resolve(getCart());
     });
   },
-  async addCarts({
-    commit
-  }, context) {
+  async addCarts({ commit }, context) {
     await new Promise((resolve, reject) => {
       commit(ADD_CARTS, context);
       resolve(context);
     });
   },
-  async deleteCart({
-    commit
-  }, context) {
+  async deleteCart({ commit }, context) {
     await new Promise((resolve, reject) => {
       commit(DELETE_CARTS, context);
       resolve(context);
     });
   },
-  async updateCart({
-    commit
-  }, context) {
+  async updateCart({ commit }, context) {
     await new Promise((resolve, reject) => {
       commit(UPDATE_CARTS, context);
       resolve(context);

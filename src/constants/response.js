@@ -1,0 +1,1 @@
+export const SUCCESS_STATUS_CODE = [200, 201, 202, 204];

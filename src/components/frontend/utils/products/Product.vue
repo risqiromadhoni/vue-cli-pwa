@@ -11,7 +11,10 @@
       <div class="p-food-content">
         <div class="p-food-author">
           <a href="#">
-            <img :src="require('@/assets/images/frontend/chef/author/02.jpg')" alt="food-author" />
+            <img
+              :src="require('@/assets/images/frontend/chef/author/02.jpg')"
+              alt="food-author"
+            />
           </a>
         </div>
         <h6>
@@ -31,8 +34,8 @@
                 <span class="tooltip-label">{{ "Dikemas" | capitalize }}</span>
                 <span class="tooltip-info">
                   {{
-                  "Dengan plastik BPA sebagai wadah standart makanan atau minuman"
-                  | capitalize
+                    "Dengan plastik BPA sebagai wadah standart makanan atau minuman"
+                      | capitalize
                   }}
                 </span>
               </div>
@@ -42,8 +45,12 @@
             <i :class="'icofont ' + iconType(product.type)"></i>
             <div class="time-tooltip">
               <div class="time-tooltip-holder">
-                <span class="tooltip-label">{{ product.type | capitalize }}</span>
-                <span class="tooltip-info">{{ `Enjoy your ${product.type}` | capitalize }}</span>
+                <span class="tooltip-label">{{
+                  product.type | capitalize
+                }}</span>
+                <span class="tooltip-info">{{
+                  `Enjoy your ${product.type}` | capitalize
+                }}</span>
               </div>
             </div>
           </li>

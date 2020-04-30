@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
 import {
-  SET_SERVICE,
-  UPDATE_SERVICE,
-  DELETE_SERVICE,
-  ADD_SERVICE
+  SET_REGENCY,
+  UPDATE_REGENCY,
+  DELETE_REGENCY,
+  ADD_REGENCY
 } from "@/store/utils/mutations";
-import ServiceService from "@/services/ServiceService";
+import CityService from "@/services/CityService";
 
 export default {
-  async setService({ commit }) {
+  async getRegency({ commit }) {
     await new Promise((resolve, reject) => {
-      ServiceService.getService()
+      CityService.getCity()
         .then(result => {
-          commit(SET_SERVICE, result.data);
+          commit(SET_REGENCY, result.data);
           resolve(result);
         })
         .catch(err => {

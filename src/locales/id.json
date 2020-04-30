@@ -1,4 +1,7 @@
 {
+  "error": "Salah",
+  "warning": "Peringatan",
+  "success": "Sukses",
   "hello": "Hello Rounin",
   "message": "hello i18n !!",
   "about": "Tentang Kami",

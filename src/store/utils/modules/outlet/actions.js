@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
 import {
-  SET_SERVICE,
-  UPDATE_SERVICE,
-  DELETE_SERVICE,
-  ADD_SERVICE
+  SET_OUTLET,
+  UPDATE_OUTLET,
+  DELETE_OUTLET,
+  ADD_OUTLET
 } from "@/store/utils/mutations";
-import ServiceService from "@/services/ServiceService";
+import OutletService from "@/services/OutletService";
 
 export default {
-  async setService({ commit }) {
+  async getOutlet({ commit }) {
     await new Promise((resolve, reject) => {
-      ServiceService.getService()
+      OutletService.getOutlet()
         .then(result => {
-          commit(SET_SERVICE, result.data);
+          commit(SET_OUTLET, result.data);
           resolve(result);
         })
         .catch(err => {

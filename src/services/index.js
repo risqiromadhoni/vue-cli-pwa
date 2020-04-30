@@ -1,5 +1,16 @@
+"use strict";
+
 import axios from "axios";
-import app from "@/main";
+import {
+  requestHandler,
+  responseHandler,
+  errorResponseHandler
+} from "@/utils/axiosHandler";
+
+// Full config:  https://github.com/axios/axios#request-config
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 let config = {
   baseURL: process.env.VUE_APP_API_URL || ""
@@ -9,49 +20,11 @@ let config = {
 
 const _axios = axios.create(config);
 
-_axios.interceptors.request.use(
-  function (config) {
-    // Do something before request is sent
-    app.$Progress.start();
-    app.$bvToast.toast(config, {
-      title: `HTTP Request Send`,
-      variant: "primary",
-      solid: true
-    });
-    return config;
-  },
-  function (error) {
-    // Do something with request error
-    app.$Progress.fail();
-    app.$bvToast.toast(error, {
-      title: `HTTP Request Send Fail`,
-      variant: "warning",
-      solid: true
-    });
-    return Promise.reject(error);
-  }
-);
+_axios.interceptors.request.use(requestHandler);
 
 // Add a response interceptor
-_axios.interceptors.response.use(
-  function (response) {
-    // Do something with response data
-    app.$Progress.finish();
-    app.$bvToast.toast(config, {
-      title: `HTTP Response`,
-      variant: "success",
-      solid: true
-    });
-    return response;
-  },
-  function (error) {
-    // Do something with response error
-    app.$Progress.fail();
-    app.$bvToast.toast(error, {
-      title: `HTTP Response Fail`,
-      variant: "warning",
-      solid: true
-    });
-    return Promise.reject(error);
-  }
-);
+_axios.interceptors.response.use(responseHandler, errorResponseHandler);
+
+export default () => {
+  return _axios;
+};

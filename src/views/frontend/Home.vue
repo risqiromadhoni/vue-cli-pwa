@@ -83,7 +83,7 @@
             <div class="row no-gutters">
               <ServiceBoxComponent
                 v-for="service in services"
-                :key="service.name"
+                :key="service._id"
                 :services="service"
               />
             </div>
