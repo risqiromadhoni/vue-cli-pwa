@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "ForgotPasswordPage",
+  name: "ForgotPasswordPage"
 };
 </script>
 

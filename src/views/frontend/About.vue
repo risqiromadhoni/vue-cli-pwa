@@ -52,7 +52,7 @@
 export default {
   name: "AboutView",
   components: {
-    Breadcrumb: () => import("@/components/frontend/Breadcrumb.vue"),
-  },
+    Breadcrumb: () => import("@/components/frontend/Breadcrumb.vue")
+  }
 };
 </script>

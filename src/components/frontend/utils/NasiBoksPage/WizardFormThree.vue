@@ -155,7 +155,7 @@ export default {
       range: {},
       nameUser: "",
       phoneUser: "",
-      addressUser: "",
+      addressUser: ""
     };
   },
   computed: {
@@ -164,9 +164,9 @@ export default {
         min: moment().format("DD/MM/YYYY"),
         max: moment()
           .add(6, "months")
-          .format("DD/MM/YYYY"),
+          .format("DD/MM/YYYY")
       };
-    },
+    }
   },
   mounted() {
     this.nameUser = "Risqi Romadhoni";
@@ -192,7 +192,7 @@ export default {
       else {
         await this.insrtData();
         let step = this.$store.state.order.step;
-        const newStep = step.map((m) => {
+        const newStep = step.map(m => {
           // Finish curent page form
           if (m.component === "WizardFormThree") m.isFinish = true;
           // Change curent page form
@@ -208,21 +208,21 @@ export default {
       }
     },
     insrtData: async function() {
-      await new Promise((resolve) => {
+      await new Promise(resolve => {
         const data = {
           key: "customer",
           data: {
             name: this.nameUser,
             phone: this.phoneUser,
             address: this.addressUser,
-            date: this.range,
-          },
+            date: this.range
+          }
         };
         this.$store.dispatch("setOrderDetail", data);
         resolve(data);
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

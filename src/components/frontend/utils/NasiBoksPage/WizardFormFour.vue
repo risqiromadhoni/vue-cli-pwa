@@ -270,7 +270,7 @@ export default {
       invService: {},
       invDetail: {},
       invUser: {},
-      invPrice: {},
+      invPrice: {}
     };
   },
   computed: {
@@ -279,7 +279,7 @@ export default {
     },
     getOrder: function() {
       const total = _.sum(
-        _.map(this.storeData.form.product, "price_disk").map((numStr) =>
+        _.map(this.storeData.form.product, "price_disk").map(numStr =>
           parseInt(numStr)
         )
       );
@@ -289,10 +289,10 @@ export default {
         customer: this.storeData.form.customer,
         price: {
           ppn: intToIdr(_.ceil((10 / 100) * total)),
-          total: intToIdr(_.ceil(_.ceil((10 / 100) * total) + total)),
-        },
+          total: intToIdr(_.ceil(_.ceil((10 / 100) * total) + total))
+        }
       };
-    },
+    }
   },
   mounted() {
     this.total = 120000;
@@ -306,12 +306,12 @@ export default {
           reformatDate(this.getOrder.customer.date.dateRange.start.date, [
             1,
             0,
-            2,
+            2
           ])
         ),
         "days"
       ),
-      total_payment: this.getOrder.price.total,
+      total_payment: this.getOrder.price.total
     };
     this.invDetail = {
       logo: "logo/01.png",
@@ -324,23 +324,23 @@ export default {
             reformatDate(this.getOrder.customer.date.dateRange.start.date, [
               1,
               0,
-              2,
+              2
             ])
-          ).format("DD MMM YYYY"),
+          ).format("DD MMM YYYY")
         },
         {
           day: moment(
             reformatDate(this.getOrder.customer.date.dateRange.end.date, [
               1,
               0,
-              2,
+              2
             ])
           ).diff(
             moment(
               reformatDate(this.getOrder.customer.date.dateRange.start.date, [
                 1,
                 0,
-                2,
+                2
               ])
             ),
             "days"
@@ -349,31 +349,31 @@ export default {
             reformatDate(this.getOrder.customer.date.dateRange.end.date, [
               1,
               0,
-              2,
+              2
             ])
-          ).format("DD MMM YYYY"),
-        },
-      ],
+          ).format("DD MMM YYYY")
+        }
+      ]
     };
     this.invUser = {
       name: this.getOrder.customer.name,
       telp: this.getOrder.customer.phone,
-      address: this.getOrder.customer.address,
+      address: this.getOrder.customer.address
     };
     this.invPrice = {
       item: this.getOrder.product,
       global: {
         ppn: this.getOrder.price.ppn,
-        total_price: this.getOrder.price.total,
-      },
+        total_price: this.getOrder.price.total
+      }
     };
   },
   methods: {
     salinInvoice: function(param) {
       console.log(param);
       return snackbar.actionText("success_copy_code_invoice");
-    },
-  },
+    }
+  }
 };
 </script>
 

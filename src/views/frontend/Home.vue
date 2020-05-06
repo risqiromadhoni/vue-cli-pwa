@@ -312,7 +312,7 @@ export default {
   components: {
     SponsorComponent: () => import("@/components/frontend/home/Sponsor"),
     BannerSwiperComponent: () => import("@/components/frontend/home/Banner"),
-    ServiceBoxComponent: () => import("@/components/frontend/home/ServiceBox"),
+    ServiceBoxComponent: () => import("@/components/frontend/home/ServiceBox")
   },
   created() {
     this.$store.dispatch("setService");
@@ -322,7 +322,7 @@ export default {
   computed: {
     services() {
       return this.$store.getters.services;
-    },
-  },
+    }
+  }
 };
 </script>
