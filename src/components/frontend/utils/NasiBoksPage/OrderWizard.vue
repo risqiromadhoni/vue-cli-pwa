@@ -11,18 +11,26 @@
       </li>
     </ul>
     <keep-alive>
-      <component :is="formPage"></component>
+      <component
+        :is="formPage"
+        transition="fade"
+        transition-mode="out-in"
+      ></component>
     </keep-alive>
   </div>
 </template>
 
 <script>
 import finish from "@/assets/images/frontend/svg/step-circle-checked.svg";
+import svg1 from "@/assets/images/frontend/svg/step-circle-1.svg";
+import svg2 from "@/assets/images/frontend/svg/step-circle-2.svg";
+import svg3 from "@/assets/images/frontend/svg/step-circle-3.svg";
+import svg4 from "@/assets/images/frontend/svg/step-circle-4.svg";
 export default {
   name: "OrderFormWizard",
   data() {
     return {
-      formPage: "WizardFormOne",
+      formPage: "",
       dataForm: []
     };
   },
@@ -37,6 +45,37 @@ export default {
     WizardFormFour: async () => await import(`./WizardFormFour`)
   },
   created() {
+    this.formPage = "WizardFormOne";
+    this.$store.dispatch("setOrderStep", [
+      {
+        name: "Restoran",
+        img: svg1,
+        isActive: true,
+        component: "WizardFormOne",
+        isFinish: false
+      },
+      {
+        name: "Makanan & Minuman",
+        img: svg2,
+        isActive: false,
+        component: "WizardFormTwo",
+        isFinish: false
+      },
+      {
+        name: "Jadwal",
+        img: svg3,
+        isActive: false,
+        component: "WizardFormThree",
+        isFinish: false
+      },
+      {
+        name: "Pembayaran",
+        img: svg4,
+        isActive: false,
+        component: "WizardFormFour",
+        isFinish: false
+      }
+    ]);
     this.dataForm = this.$store.state.order.step;
   },
   methods: {

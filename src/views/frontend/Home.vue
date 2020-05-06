@@ -316,6 +316,8 @@ export default {
   },
   created() {
     this.$store.dispatch("setService");
+    this.$store.dispatch("getRegency");
+    this.$store.dispatch("getOutlet");
   },
   computed: {
     services() {

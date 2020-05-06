@@ -137,7 +137,7 @@ export function errorResponseHandler(error) {
 }
 
 export function responseHandler(response) {
-  app.$Progress.start();
+  app.$Progress.finish();
   // Stop hourglass loader
   //   $('#hourglassLoader').hide()
 
@@ -159,6 +159,12 @@ export function requestHandler(config) {
     config.headers.authorization = `JWT ${token}`;
   }
   return config;
+}
+
+export function errorRequestHandler(error) {
+  app.$Progress.fail();
+  toast.error(error);
+  return Promise.reject(error);
 }
 
 /* axiosHandler - END */

@@ -58,7 +58,7 @@
         <b-button
           pill
           variant="outline-warning"
-          :class="`float-right ${btnNext}`"
+          :class="{ 'float-right': true, disabled: btnNext }"
           @click="saveData"
         >
           <span class="pr-3">{{ $t("next") | capitalize }}</span>
@@ -75,7 +75,7 @@ export default {
   name: "WizardFormOne",
   data() {
     return {
-      btnNext: "disabled",
+      btnNext: true,
       regency: [],
       outlet: [],
       regenciesOptions: [],
@@ -98,59 +98,63 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getRegency");
-    this.$store.dispatch("getOutlet");
-  },
-  mounted() {
-    this.regency = this.$store.state.region.regency;
-    this.outlet = this.$store.state.outlet.outlet;
-    this.regenciesOptions = this.regency.map(m => m.name);
+    this.loadData();
   },
   methods: {
+    loadData: async function() {
+      await new Promise(resolve => {
+        this.regency = this.$store.state.region.regency;
+        this.outlet = this.$store.state.outlet.outlet;
+        this.regenciesOptions = this.regency.map(m => m.name);
+        resolve(this.regenciesOptions);
+      });
+    },
     choseMyCity: async function(params) {
       const choseCity = this.regency.find(f => f.name == params);
-      if (typeof choseCity == "object") {
+      if (typeof choseCity == "object")
         this.outletsOptions = this.outlet
           .filter(fl => fl.city_id == choseCity._id)
           .map(m => m.name);
-      }
       return (this.myCity = choseCity);
     },
     choseOutlet: async function(params) {
       const choseOutlet = this.outlet.find(f => f.name == params);
-      if (typeof choseOutlet == "object" && typeof this.myCity == "object") {
-        this.btnNext = "";
-      }
+      if (typeof choseOutlet == "object" && typeof this.myCity == "object")
+        this.btnNext = false;
       return (this.myOutlet = choseOutlet);
     },
     saveData: async function() {
-      if (this.btnNext == "disabled") {
-        toast.warning("Mohon Lengkapi Form di Atas");
-      } else {
-        const step = this.$store.state.order.step;
-        console.log(
-          this.$parent.formPage,
-          step.map(m => {
-            // Finish curent page form
-            if (m.component == this.$parent.formPage) {
-              m.isFinish = true;
-            }
-            // Change curent page form
-            this.$parent.formPage = "WizardFormTwo";
-            // Role Activate page form
-            if (m.component == this.$parent.formPage) {
-              m.isActive = true;
-              m.isFinish = false;
-            } else {
-              m.isActive = false;
-            }
-            return m;
-          }),
-          this.$parent.formPage
-        );
-        // this.$store.dispatch("setOrderStep");
-        await console.log("next");
+      if (this.btnNext == true) toast.warning("Mohon Lengkapi Form di Atas");
+      else {
+        await this.insrtData();
+        let step = this.$store.state.order.step;
+        const newStep = step.map(m => {
+          // Finish curent page form
+          if (m.component == this.$parent.formPage) m.isFinish = true;
+          // Change curent page form
+          this.$parent.formPage = "WizardFormTwo";
+          // Role Activate page form
+          if (m.component == this.$parent.formPage) {
+            m.isActive = true;
+            m.isFinish = false;
+          } else m.isActive = false;
+          return m;
+        });
+        await this.$store.dispatch("setOrderStep", newStep);
       }
+    },
+    insrtData: async function() {
+      await new Promise(resolve => {
+        const data = {
+          key: "location",
+          data: {
+            city: this.modelCity,
+            outlet: this.modelOutlet
+          }
+        };
+        this.$store.dispatch("setOrderDetail", data);
+        resolve(data);
+      });
     }
   }
 };

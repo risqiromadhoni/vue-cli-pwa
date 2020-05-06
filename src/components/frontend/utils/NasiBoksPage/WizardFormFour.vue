@@ -22,7 +22,10 @@
                 <tr v-for="(item, key) in invService" :key="key">
                   <td>{{ $t(key) | capitalize }}</td>
                   <td class="px-3">:</td>
-                  <td>{{ item }}</td>
+                  <td>
+                    {{ item }}
+                    <span v-show="key == 'long_subscription'">hari</span>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -34,6 +37,7 @@
                 class="icofont icofont-ui-copy"
                 v-b-tooltip.hover
                 title="Salin Invoice"
+                @click="salinInvoice"
               ></i>
             </span>
           </template>
@@ -59,12 +63,14 @@
               <b-col cols="4">
                 <b-img-lazy
                   fluid
-                  :src="require('@/assets/images/frontend/logo/01.png')"
+                  :src="require(`@/assets/images/frontend/${invDetail.logo}`)"
                   alt="logo"
                 ></b-img-lazy>
               </b-col>
               <b-col cols="6">
-                <p class="font-weight-bold m-0">Foodpedia Jakarta</p>
+                <p class="font-weight-bold m-0">
+                  {{ invDetail.restaurant | capitalize }}
+                </p>
                 <p class="m-0">
                   <small>Paket Makan Siang</small>
                 </p>
@@ -72,49 +78,27 @@
               <b-col cols="2">
                 <b-badge pill variant="light">
                   <i class="icofont icofont-clock-time"></i>
-                  12:00
+                  {{ invDetail.hour }}
                 </b-badge>
               </b-col>
             </b-row>
             <ul class="timeline">
-              <li>
+              <li v-for="item in invDetail.detail" :key="item.day">
                 <a>
                   {{ new Date() | date("DD MMMM YYYY") }}
                   <b-badge
                     pill
                     variant="light"
                     v-b-tooltip.hover
-                    title="Hari Ke - 1"
+                    :title="`Hari Ke - ${item.day}`"
                   >
                     <i class="icofont icofont-calendar"></i>
-                    1
+                    {{ item.day }}
                   </b-badge>
                 </a>
                 <p>
-                  Hari ke 1 Pesanan anda di antar pukul 11:00. Bila ada
-                  pertanyaan silahkan hubungi
-                  <a href="tel:+62331725998">
-                    <em>customer service</em>
-                  </a>
-                  kami.
-                </p>
-              </li>
-              <li>
-                <a>
-                  {{ new Date() | date("DD MMMM YYYY") }}
-                  <b-badge
-                    pill
-                    variant="light"
-                    v-b-tooltip.hover
-                    title="Hari Ke - 13"
-                  >
-                    <i class="icofont icofont-calendar"></i>
-                    13
-                  </b-badge>
-                </a>
-                <p>
-                  Hari ke 13 Pesanan anda di antar pukul 11:00. Bila ada
-                  pertanyaan silahkan hubungi
+                  Hari ke {{ item.day }} Pesanan anda di antar pukul 11:00. Bila
+                  ada pertanyaan silahkan hubungi
                   <a href="tel:+62331725998">
                     <em>customer service</em>
                   </a>
@@ -274,69 +258,121 @@
 <script>
 import Vue from "vue";
 import * as moment from "moment";
-import { randString, intToIdr } from "@/utils/helper";
+import _ from "lodash";
+import snackbar from "@/utils/snackbar";
+import { randString, intToIdr, reformatDate } from "@/utils/helper";
 export default {
   name: "",
   data() {
-    const now = new Date();
-    // Dummy data
     const invoice = randString();
-    let dataService = {
+    return {
+      total: 0,
+      invoice: invoice,
+      invService: {},
+      invDetail: {},
+      invUser: {},
+      invPrice: {}
+    };
+  },
+  computed: {
+    storeData: function() {
+      return this.$store.state.order;
+    },
+    getOrder: function() {
+      const total = _.sum(
+        _.map(this.storeData.form.product, "price_disk").map(numStr =>
+          parseInt(numStr)
+        )
+      );
+      return {
+        location: this.storeData.form.location,
+        product: this.storeData.form.product,
+        customer: this.storeData.form.customer,
+        price: {
+          ppn: intToIdr(_.ceil((10 / 100) * total)),
+          total: intToIdr(_.ceil(_.ceil((10 / 100) * total) + total))
+        }
+      };
+    }
+  },
+  mounted() {
+    this.total = 120000;
+    this.invService = {
       date: moment().format("DD MMMM YYYY"),
       outlet: "foodpedia",
-      long_subscription: "12 Hari",
-      total_payment: intToIdr(Vue.faker().commerce.price())
+      long_subscription: moment(
+        reformatDate(this.getOrder.customer.date.dateRange.end.date, [1, 0, 2])
+      ).diff(
+        moment(
+          reformatDate(this.getOrder.customer.date.dateRange.start.date, [
+            1,
+            0,
+            2
+          ])
+        ),
+        "days"
+      ),
+      total_payment: this.getOrder.price.total
     };
-    let dataDetail = {
+    this.invDetail = {
       logo: "logo/01.png",
       restaurant: "foodpedia jakarta",
-      hour: moment(now).format("hh:mm"),
+      hour: "12:00",
       detail: [
         {
           day: 1,
-          date: now
+          date: moment(
+            reformatDate(this.getOrder.customer.date.dateRange.start.date, [
+              1,
+              0,
+              2
+            ])
+          ).format("DD MMM YYYY")
         },
         {
-          day: 13,
-          date: moment(now).add(13, "days")
+          day: moment(
+            reformatDate(this.getOrder.customer.date.dateRange.end.date, [
+              1,
+              0,
+              2
+            ])
+          ).diff(
+            moment(
+              reformatDate(this.getOrder.customer.date.dateRange.start.date, [
+                1,
+                0,
+                2
+              ])
+            ),
+            "days"
+          ),
+          date: moment(
+            reformatDate(this.getOrder.customer.date.dateRange.end.date, [
+              1,
+              0,
+              2
+            ])
+          ).format("DD MMM YYYY")
         }
       ]
     };
-    let dataUser = {
+    this.invUser = {
       name: Vue.faker().name.firstName(),
       telp: Vue.faker().phone.phoneNumber(),
       address: Vue.faker().address.streetAddress()
     };
-    let dataPrice = {
-      item: [
-        {
-          name: Vue.faker().commerce.productName(),
-          total: 13,
-          price: intToIdr(Vue.faker().commerce.price())
-        },
-        {
-          name: Vue.faker().commerce.productName(),
-          total: 13,
-          price: intToIdr(Vue.faker().commerce.price())
-        }
-      ],
+    this.invPrice = {
+      item: this.getOrder.product,
       global: {
-        ppn: intToIdr(Vue.faker().commerce.price()),
-        total_price: intToIdr(Vue.faker().commerce.price())
+        ppn: this.getOrder.price.ppn,
+        total_price: this.getOrder.price.total
       }
     };
-    return {
-      total: 0,
-      invoice: invoice,
-      invService: dataService,
-      invDetail: dataDetail,
-      invUser: dataUser,
-      invPrice: dataPrice
-    };
   },
-  computed: {},
-  mounted() {
-    this.total = 120000;
+  methods: {
+    salinInvoice: function() {
+      return snackbar.actionText("success_copy_code_invoice");
+    }
   }
 };
 </script>

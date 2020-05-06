@@ -19,5 +19,11 @@ export default {
       commit(SET_ORDER_DETAIL, payload);
       resolve(payload);
     });
+  },
+  async destroyOrder({ commit }) {
+    await new Promise((resolve, reject) => {
+      commit(DELETE_ORDER);
+      resolve("deleted!");
+    });
   }
 };

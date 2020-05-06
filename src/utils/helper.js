@@ -1,4 +1,5 @@
-import * as moment from "moment";
+import moment from "moment";
+import _ from "lodash";
 
 export function toSlug(text) {
   return text
@@ -122,4 +123,13 @@ export function intToIdr(value) {
     style: "currency",
     currency: "IDR"
   }).format(value);
+}
+
+export function reformatDate(value, position) {
+  let res = [];
+  const arrVal = _.split(value, "/");
+  _.forEach(position, pos => {
+    res.push(_.nth(arrVal, pos));
+  });
+  return _.map(res).join("/");
 }

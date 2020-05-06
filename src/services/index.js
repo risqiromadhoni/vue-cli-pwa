@@ -4,7 +4,8 @@ import axios from "axios";
 import {
   requestHandler,
   responseHandler,
-  errorResponseHandler
+  errorResponseHandler,
+  errorRequestHandler
 } from "@/utils/axiosHandler";
 
 // Full config:  https://github.com/axios/axios#request-config
@@ -20,7 +21,7 @@ let config = {
 
 const _axios = axios.create(config);
 
-_axios.interceptors.request.use(requestHandler);
+_axios.interceptors.request.use(requestHandler, errorRequestHandler);
 
 // Add a response interceptor
 _axios.interceptors.response.use(responseHandler, errorResponseHandler);

@@ -21,7 +21,12 @@
         </b-col>
         <b-col cols="12" class="my-3">
           <div class="d-block">
-            <b-button pill variant="outline-warning" class="float-right">
+            <b-button
+              pill
+              variant="outline-warning"
+              :class="{ 'float-right': true, disabled: btnNext }"
+              @click="saveProduct"
+            >
               <span class="pr-3">{{ $t("next") | capitalize }}</span>
               <i class="icofont icofont-arrow-right"></i>
             </b-button>
@@ -33,13 +38,13 @@
 </template>
 
 <script>
-import regencieData from "@/store/static/regencies";
 import products from "@/store/static/product";
+import toast from "@/utils/toast";
 export default {
   name: "WizardFormTwo",
   data() {
     return {
-      regenciesOptions: [],
+      btnNext: false,
       city: {},
       product: []
     };
@@ -48,12 +53,36 @@ export default {
     ProductBox: () => import("@/components/frontend/utils/products/Product")
   },
   mounted() {
-    this.regenciesOptions = regencieData;
     this.product = products;
   },
+  computed: {
+    storeProduct: function() {
+      return this.$store.state.order.form.product;
+    }
+  },
   methods: {
-    saveLocation: async function() {
-      await alert("two");
+    saveProduct: async function() {
+      if (
+        typeof this.storeProduct == "undefined" ||
+        this.storeProduct.length <= 0
+      )
+        toast.warning("Silahkan Memilih Menu!");
+      else {
+        let step = this.$store.state.order.step;
+        const newStep = step.map(m => {
+          // Finish curent page form
+          if (m.component === "WizardFormTwo") m.isFinish = true;
+          // Change curent page form
+          this.$parent.formPage = "WizardFormThree";
+          // Role Activate page form
+          if (m.component == this.$parent.formPage) {
+            m.isActive = true;
+            m.isFinish = false;
+          } else m.isActive = false;
+          return m;
+        });
+        await this.$store.dispatch("setOrderStep", newStep);
+      }
     },
     loadProduct: function() {
       return this.product.concat(products);

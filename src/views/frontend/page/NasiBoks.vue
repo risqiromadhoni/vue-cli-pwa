@@ -18,17 +18,13 @@
         <h3>Nasi Boks</h3>
         <p>Atur jadwal makan kamu sesuai dengan keinginan.</p>
       </div>
-      <OrderFormWizard :dataForm="wizardFormOrder" />
+      <OrderFormWizard />
     </div>
   </section>
   <!-- Booking Table Section Ending Here -->
 </template>
 
 <script>
-import svg1 from "@/assets/images/frontend/svg/step-circle-1.svg";
-import svg2 from "@/assets/images/frontend/svg/step-circle-2.svg";
-import svg3 from "@/assets/images/frontend/svg/step-circle-3.svg";
-import svg4 from "@/assets/images/frontend/svg/step-circle-4.svg";
 export default {
   name: "NasiBoksPage",
   data() {
@@ -40,42 +36,8 @@ export default {
     OrderFormWizard: () =>
       import("@/components/frontend/utils/NasiBoksPage/OrderWizard")
   },
-  created() {
-    // Create Navigation
-    this.$store.dispatch("setOrderStep", [
-      {
-        name: "Restoran",
-        img: svg1,
-        isActive: true,
-        component: "WizardFormOne",
-        isFinish: false
-      },
-      {
-        name: "Makanan & Minuman",
-        img: svg2,
-        isActive: false,
-        component: "WizardFormTwo",
-        isFinish: false
-      },
-      {
-        name: "Jadwal",
-        img: svg3,
-        isActive: false,
-        component: "WizardFormThree",
-        isFinish: false
-      },
-      {
-        name: "Pembayaran",
-        img: svg4,
-        isActive: false,
-        component: "WizardFormFour",
-        isFinish: false
-      }
-    ]);
-    // this.wizardFormOrder.push(navStep);
-  },
   mounted() {
-    this.wizardFormOrder = this.$store.state.order.step;
+    this.$store.dispatch("destroyOrder");
   }
 };
 </script>

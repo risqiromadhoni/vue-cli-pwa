@@ -18,5 +18,14 @@
   "address": "Alamat",
   "food_and_drink": "Makanan & Minuman",
   "loadmore": "Lebih banyak",
-  "next": "berikutnya"
+  "next": "berikutnya",
+  "fullname": "nama lengkap",
+  "email": "E-mail",
+  "send": "Kirim",
+  "cancel": "Batal",
+  "close": "Tutup",
+  "edit": "Ubah",
+  "make_sure_your_data_is_correct": "Pastikan data anda sudah benar",
+  "close": "Tutup",
+  "success_copy_code_invoice": "Kode invoice telah tersalin"
 }
