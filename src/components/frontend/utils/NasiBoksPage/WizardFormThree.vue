@@ -111,15 +111,20 @@
       </b-modal>
     </b-col>
     <b-col sm>
-      <functional-calendar
-        :is-date-range="true"
-        :disabled-day-names="['Senin', 'Minggu']"
-        :limits="limitDate"
-        v-model="range"
-      ></functional-calendar>
-      <b-card>
+      <b-form-group
+        :label="$t('chose_range_date') | capitalize"
+        label-for="date-range"
+      >
+        <functional-calendar
+          :is-date-range="true"
+          :disabled-day-names="['Senin', 'Minggu']"
+          :limits="limitDate"
+          v-model="range"
+        ></functional-calendar>
+      </b-form-group>
+      <!-- <b-card>
         <code>{{ range }}</code>
-      </b-card>
+      </b-card> -->
     </b-col>
     <b-col cols="12" class="my-3">
       <div class="d-block">
@@ -150,7 +155,7 @@ export default {
       range: {},
       nameUser: "",
       phoneUser: "",
-      addressUser: ""
+      addressUser: "",
     };
   },
   computed: {
@@ -159,9 +164,9 @@ export default {
         min: moment().format("DD/MM/YYYY"),
         max: moment()
           .add(6, "months")
-          .format("DD/MM/YYYY")
+          .format("DD/MM/YYYY"),
       };
-    }
+    },
   },
   mounted() {
     this.nameUser = "Risqi Romadhoni";
@@ -187,7 +192,7 @@ export default {
       else {
         await this.insrtData();
         let step = this.$store.state.order.step;
-        const newStep = step.map(m => {
+        const newStep = step.map((m) => {
           // Finish curent page form
           if (m.component === "WizardFormThree") m.isFinish = true;
           // Change curent page form
@@ -203,21 +208,21 @@ export default {
       }
     },
     insrtData: async function() {
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         const data = {
           key: "customer",
           data: {
             name: this.nameUser,
             phone: this.phoneUser,
             address: this.addressUser,
-            date: this.range
-          }
+            date: this.range,
+          },
         };
         this.$store.dispatch("setOrderDetail", data);
         resolve(data);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -237,5 +242,6 @@ export default {
 .vfc-main-container {
   box-shadow: none;
   -webkit-box-shadow: none;
+  z-index: 1;
 }
 </style>

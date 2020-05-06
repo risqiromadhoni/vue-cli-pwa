@@ -27,5 +27,6 @@
   "edit": "Ubah",
   "make_sure_your_data_is_correct": "Pastikan data anda sudah benar",
   "close": "Tutup",
-  "success_copy_code_invoice": "Kode invoice telah tersalin"
+  "success_copy_code_invoice": "Kode invoice telah tersalin",
+  "chose_range_date": "Jangka waktu berlangganan"
 }
