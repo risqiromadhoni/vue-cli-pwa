@@ -112,20 +112,16 @@
     </b-col>
     <b-col sm>
       <b-form-group
-        :label="$t('chose_range_date') | capitalize"
+        :label="$t('scheduling_visit') | capitalize"
         label-for="date-range"
       >
         <functional-calendar
-          :is-date-range="true"
-          :disabled-day-names="['Sabtu', 'Minggu']"
+          :is-date-picker="true"
           :limits="limitDate"
           v-model="range"
         ></functional-calendar>
       </b-form-group>
-      <b-card>
-        <code>{{ range }}</code>
-      </b-card>
-      <b-form-group :label="$t('chose_time_eat') + ' :'" label-for="time">
+      <b-form-group label-for="time">
         <b-form-timepicker v-model="time" locale="en"></b-form-timepicker>
       </b-form-group>
     </b-col>

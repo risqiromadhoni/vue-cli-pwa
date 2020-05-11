@@ -27,5 +27,13 @@
   "edit": "Ubah",
   "make_sure_your_data_is_correct": "Pastikan data anda sudah benar",
   "success_copy_code_invoice": "Kode invoice telah tersalin",
-  "chose_range_date": "Jangka waktu berlangganan"
+  "chose_range_date": "Jangka waktu berlangganan",
+  "chose_time_eat": "Pilih Jam Makan",
+  "reciver_address": "Alamat Penerima",
+  "detail_reciver": "Data Pemesan",
+  "rice_boks": "Nasi Boks",
+  "rice_boks_desc": "Atur jadwal makan kamu sesuai dengan keinginan",
+  "book_place": "Reservasi Tempat",
+  "book_place_desc": "Pesan meja lebih awal untuk acara yang lebih sempurna",
+  "scheduling_visit": "Jadwal Datang"
 }

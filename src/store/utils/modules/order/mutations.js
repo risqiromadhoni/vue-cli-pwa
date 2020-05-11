@@ -21,9 +21,15 @@ export default {
             state.form[payload.key],
             i => i.id === payload.data.id
           );
-          if (findItem >= 0)
-            return _.pullAt(state.form[payload.key], [findItem]);
-          else return state.form[payload.key].push(payload.data);
+          if (findItem >= 0) {
+            // TODO: Replace item by index array
+            if (payload.data.qty == 0)
+              return _.pullAt(state.form[payload.key], [findItem]);
+            else {
+              _.pullAt(state.form[payload.key], [findItem]);
+              return state.form[payload.key].push(payload.data);
+            }
+          } else return state.form[payload.key].push(payload.data);
         } else return (state.form[payload.key] = _.castArray(payload.data));
       default:
         return (state.form[payload.key] = payload.data);

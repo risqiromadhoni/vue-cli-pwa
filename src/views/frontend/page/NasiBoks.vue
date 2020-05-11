@@ -15,8 +15,8 @@
     </div>
     <div class="container">
       <div class="section-header">
-        <h3>Nasi Boks</h3>
-        <p>Atur jadwal makan kamu sesuai dengan keinginan.</p>
+        <h3>{{ $t("rice_boks") }}</h3>
+        <p>{{ $t("rice_boks_desc") }}</p>
       </div>
       <OrderFormWizard />
     </div>

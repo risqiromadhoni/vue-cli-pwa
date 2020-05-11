@@ -215,7 +215,7 @@ $(".counter").counterUp({
 }); */
 
 // shop cart + - start here
-var CartPlusMinus = $(".cart-plus-minus");
+/* var CartPlusMinus = $(".cart-plus-minus");
 CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
 CartPlusMinus.append('<div class="inc qtybutton">+</div>');
 $(".qtybutton").on("click", function() {
@@ -238,7 +238,7 @@ $(".qtybutton").on("click", function() {
     .parent()
     .find("input")
     .val(newVal);
-});
+}); */
 
 // banner slider
 /* swiper(".gallery-thumbs", {

@@ -1,6 +1,6 @@
 <template>
-  <div :class="`p-food-item`" @click="choseRice">
-    <div :class="`p-food-inner`">
+  <div :class="`p-food-item`">
+    <div :class="`p-food-inner`" @click="choseRice">
       <div class="p-food-thumb">
         <img v-lazy="product.img" alt="p-food" />
         <span>
@@ -45,12 +45,12 @@
             <i :class="'icofont ' + iconType(product.type)"></i>
             <div class="time-tooltip">
               <div class="time-tooltip-holder">
-                <span class="tooltip-label">
-                  {{ product.type | capitalize }}
-                </span>
-                <span class="tooltip-info">
-                  {{ `Enjoy your ${product.type}` | capitalize }}
-                </span>
+                <span class="tooltip-label">{{
+                  product.type | capitalize
+                }}</span>
+                <span class="tooltip-info">{{
+                  `Enjoy your ${product.type}` | capitalize
+                }}</span>
               </div>
             </div>
           </li>
@@ -74,44 +74,21 @@
     </div>
     <div :class="{ itemCart: true, active: isActive }">
       <div class="checked-item">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="96"
-          height="96"
-          viewBox="0 0 172 172"
-          style=" fill:#000000;"
-        >
-          <g
-            fill="none"
-            fill-rule="nonzero"
-            stroke="none"
-            stroke-width="1"
-            stroke-linecap="butt"
-            stroke-linejoin="miter"
-            stroke-miterlimit="10"
-            stroke-dasharray
-            stroke-dashoffset="0"
-            font-family="none"
-            font-weight="none"
-            font-size="none"
-            text-anchor="none"
-            style="mix-blend-mode: normal"
-          >
-            <path d="M0,172v-172h172v172z" fill="none" />
-            <g>
-              <path
-                d="M157.66667,86c0,39.57792 -32.08875,71.66667 -71.66667,71.66667c-39.57792,0 -71.66667,-32.08875 -71.66667,-71.66667c0,-39.57792 32.08875,-71.66667 71.66667,-71.66667c39.57792,0 71.66667,32.08875 71.66667,71.66667z"
-                fill="#c8e6c9"
-              />
-              <path
-                d="M123.93317,52.2665l-48.62583,48.68317l-20.07383,-20.0165l-10.13367,10.13367l30.22183,30.15017l58.74875,-58.81683z"
-                fill="#4caf50"
-              />
-            </g>
-          </g>
-        </svg>
+        <div class="icons8-check">
+          <ProductCheck />
+        </div>
+        <div class="productQty">
+          <div class="cart-plus-minus">
+            <div class="dec qtybutton" @click="decQty">-</div>
+            <input
+              class="cart-plus-minus-box"
+              type="text"
+              name="qtybutton"
+              v-model="qty"
+            />
+            <div class="inc qtybutton" @click="incQty">+</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -122,31 +99,52 @@ export default {
   name: "ProductUtilsComponent",
   data() {
     return {
-      isActive: false
+      isActive: false,
+      qty: 0
     };
   },
   props: {
     product: Object
+  },
+  components: {
+    ProductCheck: () => import("@/components/frontend/constants/ProductCheck")
   },
   methods: {
     iconType: function(params) {
       return params == "makan" ? "icofont-burger" : "icofont-soft-drinks";
     },
     choseRice: async function() {
-      await this.insrtData();
+      await this.insrtData(this.product);
       const data = this.$store.getters.itemActive(this.product);
-      if (typeof data == "object") this.isActive = true;
-      else this.isActive = false;
+      if (typeof data == "object") {
+        this.isActive = true;
+        this.incQty();
+      } else this.isActive = false;
     },
-    insrtData: async function() {
+    insrtData: async function(product) {
       await new Promise(resolve => {
         const data = {
           key: "product",
-          data: this.product
+          data: product
         };
         this.$store.dispatch("setOrderDetail", data);
         resolve(data);
       });
+    },
+    decQty: async function() {
+      let product = this.product;
+      product["qty"] = this.qty - 1;
+      await this.insrtData(product);
+      if (this.qty <= 1) {
+        this.isActive = false;
+        return (this.qty = this.qty - 1);
+      } else return (this.qty = this.qty - 1);
+    },
+    incQty: async function() {
+      let product = this.product;
+      product["qty"] = this.qty + 1;
+      await this.insrtData(product);
+      return (this.qty = this.qty + 1);
     }
   }
 };
@@ -170,7 +168,7 @@ export default {
   cursor: pointer;
 }
 .itemCart {
-  display: flex;
+  display: none;
   opacity: 0;
   position: absolute;
   align-items: center;
@@ -178,8 +176,9 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba($color: #ff9800, $alpha: 0.5);
+  background-color: rgba($color: #ffc947, $alpha: 0.5);
   &.active {
+    display: flex;
     opacity: 1;
     transition: opacity 0.25s ease-in-out;
     -moz-transition: opacity 0.25s ease-in-out;
@@ -187,6 +186,11 @@ export default {
     .checked-item {
       overflow: hidden;
       margin: 0 auto;
+      .icons8-check {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
     }
   }
 }

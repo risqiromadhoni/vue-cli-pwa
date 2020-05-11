@@ -110,5 +110,9 @@ export default {
       style: "currency",
       currency: "IDR"
     }).format(value);
+  },
+  subStr: (value, num) => {
+    if (typeof value !== "undefined") return value.substring(0, num);
+    else return "NaN";
   }
 };

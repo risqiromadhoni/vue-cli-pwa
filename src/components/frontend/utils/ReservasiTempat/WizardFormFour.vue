@@ -22,10 +22,7 @@
                 <tr v-for="(item, key) in invService" :key="key">
                   <td>{{ $t(key) | capitalize }}</td>
                   <td class="px-3">:</td>
-                  <td>
-                    {{ item }}
-                    <span v-show="key == 'long_subscription'">hari</span>
-                  </td>
+                  <td>{{ item }}</td>
                 </tr>
               </tbody>
             </table>
@@ -97,8 +94,8 @@
                   </b-badge>
                 </a>
                 <p>
-                  Hari ke {{ item.day }} Pesanan anda di antar pukul 11:00. Bila
-                  ada pertanyaan silahkan hubungi
+                  Patikan anda datang 1 jam sebelum jadwal yang telah di
+                  tentukan, bila ada kendala silahkan hubungi
                   <a href="tel:+62331725998">
                     <em>customer service</em>
                   </a>
@@ -258,7 +255,7 @@
 <script>
 import moment from "moment";
 import snackbar from "@/utils/snackbar";
-import { randString, intToIdr, reformatDate } from "@/utils/helper";
+import { randString, intToIdr, reformatDate, date } from "@/utils/helper";
 export default {
   name: "",
   data() {
@@ -290,17 +287,9 @@ export default {
     this.invService = {
       date: moment().format("DD MMMM YYYY"),
       outlet: "foodpedia",
-      long_subscription: moment(
-        reformatDate(this.getOrder.customer.date.dateRange.end.date, [1, 0, 2])
-      ).diff(
-        moment(
-          reformatDate(this.getOrder.customer.date.dateRange.start.date, [
-            1,
-            0,
-            2
-          ])
-        ),
-        "days"
+      long_subscription: date(
+        reformatDate(this.getOrder.customer.date.selectedDate, [1, 0, 2]),
+        "DD MMM YYYY"
       ),
       total_payment: intToIdr(this.getOrder.product.total)
     };
@@ -313,31 +302,6 @@ export default {
           day: 1,
           date: moment(
             reformatDate(this.getOrder.customer.date.dateRange.start.date, [
-              1,
-              0,
-              2
-            ])
-          ).format("DD MMM YYYY")
-        },
-        {
-          day: moment(
-            reformatDate(this.getOrder.customer.date.dateRange.end.date, [
-              1,
-              0,
-              2
-            ])
-          ).diff(
-            moment(
-              reformatDate(this.getOrder.customer.date.dateRange.start.date, [
-                1,
-                0,
-                2
-              ])
-            ),
-            "days"
-          ),
-          date: moment(
-            reformatDate(this.getOrder.customer.date.dateRange.end.date, [
               1,
               0,
               2
