@@ -112,20 +112,16 @@
     </b-col>
     <b-col sm>
       <b-form-group
-        :label="$t('chose_range_date') | capitalize"
+        :label="$t('scheduling_visit') | capitalize"
         label-for="date-range"
       >
         <functional-calendar
-          :is-date-range="true"
-          :disabled-day-names="['Sabtu', 'Minggu']"
+          :is-date-picker="true"
           :limits="limitDate"
           v-model="range"
         ></functional-calendar>
       </b-form-group>
-      <!-- <b-card>
-        <code>{{ range }}</code>
-      </b-card>-->
-      <b-form-group :label="$t('chose_time_eat') + ' :'" label-for="time">
+      <b-form-group label-for="time">
         <b-form-timepicker v-model="time" locale="en"></b-form-timepicker>
       </b-form-group>
     </b-col>
@@ -150,7 +146,7 @@ import moment from "moment";
 import toast from "@/utils/toast";
 import _ from "lodash";
 export default {
-  name: "WizardFormThree",
+  name: "WizardFormThreeReserve",
   data() {
     return {
       addressCustomer: false,
@@ -192,9 +188,9 @@ export default {
         let step = this.$store.state.order.step;
         const newStep = step.map(m => {
           // Finish curent page form
-          if (m.component === "WizardFormThree") m.isFinish = true;
+          if (m.component === "WizardFormThreeReserve") m.isFinish = true;
           // Change curent page form
-          this.$parent.formPage = "WizardFormFour";
+          this.$parent.formPage = "WizardFormFourReserve";
           // Role Activate page form
           if (m.component == this.$parent.formPage) {
             m.isActive = true;

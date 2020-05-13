@@ -28,7 +28,7 @@ import svg3 from "@/assets/images/frontend/svg/step-circle-3.svg";
 import svg4 from "@/assets/images/frontend/svg/step-circle-4.svg";
 export default {
   // FIXME: Name must be unique
-  name: "OrderFormWizard",
+  name: "OrderFormWizardReserve",
   data() {
     return {
       formPage: "",
@@ -37,43 +37,44 @@ export default {
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    WizardFormOne: async () => await import(`./WizardFormOne`),
+    WizardFormOneReserve: async () => await import(`./WizardFormOneReserve`),
     // eslint-disable-next-line vue/no-unused-components
-    WizardFormTwo: async () => await import(`./WizardFormTwo`),
+    WizardFormTwoReserve: async () => await import(`./WizardFormTwoReserve`),
     // eslint-disable-next-line vue/no-unused-components
-    WizardFormThree: async () => await import(`./WizardFormThree`),
+    WizardFormThreeReserve: async () =>
+      await import(`./WizardFormThreeReserve`),
     // eslint-disable-next-line vue/no-unused-components
-    WizardFormFour: async () => await import(`./WizardFormFour`)
+    WizardFormFourReserve: async () => await import(`./WizardFormFourReserve`)
   },
   created() {
-    this.formPage = "WizardFormOne";
+    this.formPage = "WizardFormOneReserve";
     this.$store.dispatch("setOrderStep", [
       {
         name: "Restoran",
         img: svg1,
         isActive: true,
-        component: "WizardFormOne",
+        component: "WizardFormOneReserve",
         isFinish: false
       },
       {
         name: "Makanan & Minuman",
         img: svg2,
         isActive: false,
-        component: "WizardFormTwo",
+        component: "WizardFormTwoReserve",
         isFinish: false
       },
       {
         name: "Jadwal",
         img: svg3,
         isActive: false,
-        component: "WizardFormThree",
+        component: "WizardFormThreeReserve",
         isFinish: false
       },
       {
         name: "Pembayaran",
         img: svg4,
         isActive: false,
-        component: "WizardFormFour",
+        component: "WizardFormFourReserve",
         isFinish: false
       }
     ]);

@@ -16,41 +16,72 @@
       <div class="contact-form">
         <form :id="$style.locationForm" enctype="multipart/form-data">
           <b-form-group
-            :id="$style.pilihKota"
-            label="Pilih Kota :"
+            :class="$style.groupInput"
+            :label="$t('orphanage_name') + ' :'"
+            label-for="input-title"
+          >
+            <b-form-input
+              id="input-title"
+              v-model="modelTitle"
+              type="text"
+              required
+              :placeholder="$t('orphanage_name')"
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group
+            :class="$style.groupInput"
+            :label="$t('orphanage_telp') + ' :'"
+            label-for="input-phone"
+          >
+            <b-form-input
+              id="input-phone"
+              v-model="modelPhone"
+              type="number"
+              required
+              :placeholder="$t('orphanage_telp')"
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group
+            :class="$style.groupInput"
+            :label="$t('chose_city') + ' :'"
             label-for="chose-city"
           >
-            <b-form-input v-model="modelCity" list="city-list"></b-form-input>
+            <b-form-input
+              v-model="modelCity"
+              list="city-list"
+              :placeholder="$t('list_of_city')"
+            ></b-form-input>
             <b-form-datalist
               id="city-list"
               :options="regenciesOptions"
             ></b-form-datalist>
           </b-form-group>
           <b-form-group
-            :id="$style.pilihOutlet"
-            label="Pilih Outlet :"
-            label-for="chose-outlet"
+            :class="$style.groupInput"
+            :label="$t('address') + ' :'"
+            label-for="address-user"
           >
-            <b-form-input
-              v-model="modelOutlet"
-              list="outlet-list"
-            ></b-form-input>
-            <b-form-datalist
-              id="outlet-list"
-              :options="outletsOptions"
-            ></b-form-datalist>
+            <b-form-textarea
+              id="address-user"
+              required
+              v-model="modelAddress"
+              :placeholder="$t('orphanage_name_desc')"
+              rows="3"
+              max-rows="6"
+            ></b-form-textarea>
           </b-form-group>
         </form>
       </div>
     </b-col>
     <b-col sm>
       <div>
-        <b-embed
-          type="iframe"
-          aspect="16by9"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31733.640282183675!2d106.81369610193498!3d-6.170236196550788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f50f1bd7bfc9%3A0x6828e51e719c24bd!2sGraha%20Foodpedia%20Pasar%20Baru!5e0!3m2!1sid!2sid!4v1587368310704!5m2!1sid!2sid"
-          allowfullscreen
-        ></b-embed>
+        <img
+          v-lazy="
+            require('@/assets/images/frontend/banner/bg/close-up-photo-of-sushi-served-on-table.jpg')
+          "
+          alt="food-one"
+          class="img-fluid d-none d-md-flex"
+        />
       </div>
     </b-col>
     <b-col cols="12" class="my-3">
@@ -71,19 +102,20 @@
 
 <script>
 import toast from "@/utils/toast";
+import _ from "lodash";
 export default {
-  name: "WizardFormOne",
+  name: "WizardFormOneSedekah",
   data() {
     return {
       btnNext: true,
       regency: [],
       outlet: [],
       regenciesOptions: [],
-      outletsOptions: [],
+      modelTitle: "",
       modelCity: "",
+      modelAddress: "",
+      modelPhone: 0,
       myCity: {},
-      modelOutlet: "",
-      myOutlet: {},
       city: {}
     };
   },
@@ -91,10 +123,6 @@ export default {
     // eslint-disable-next-line no-unused-vars
     modelCity: function(newData, oldData) {
       this.choseMyCity(newData);
-    },
-    // eslint-disable-next-line no-unused-vars
-    modelOutlet: function(newData, oldData) {
-      this.choseOutlet(newData);
     }
   },
   created() {
@@ -111,20 +139,16 @@ export default {
     },
     choseMyCity: async function(params) {
       const choseCity = this.regency.find(f => f.name == params);
-      if (typeof choseCity == "object")
-        this.outletsOptions = this.outlet
-          .filter(fl => fl.city_id == choseCity._id)
-          .map(m => m.name);
       return (this.myCity = choseCity);
     },
-    choseOutlet: async function(params) {
-      const choseOutlet = this.outlet.find(f => f.name == params);
-      if (typeof choseOutlet == "object" && typeof this.myCity == "object")
-        this.btnNext = false;
-      return (this.myOutlet = choseOutlet);
-    },
     saveData: async function() {
-      if (this.btnNext == true) toast.warning("Mohon Lengkapi Form di Atas");
+      if (
+        _.isEmpty(this.modelTitle) &&
+        _.isEmpty(this.modelPhone) &&
+        _.isEmpty(this.myCity) &&
+        _.isEmpty(this.modelAddress)
+      )
+        toast.warning("Mohon Lengkapi Form di Atas");
       else {
         await this.insrtData();
         let step = this.$store.state.order.step;
@@ -132,7 +156,7 @@ export default {
           // Finish curent page form
           if (m.component == this.$parent.formPage) m.isFinish = true;
           // Change curent page form
-          this.$parent.formPage = "WizardFormTwo";
+          this.$parent.formPage = "WizardFormTwoSedekah";
           // Role Activate page form
           if (m.component == this.$parent.formPage) {
             m.isActive = true;
@@ -149,7 +173,9 @@ export default {
           key: "location",
           data: {
             city: this.modelCity,
-            outlet: this.modelOutlet
+            phone: this.modelPhone,
+            orphanage_name: this.modelTitle,
+            orphanage_address: this.modelAddress
           }
         };
         this.$store.dispatch("setOrderDetail", data);
@@ -165,12 +191,7 @@ $with-full: 100%;
 $d-block: block;
 $zero: 0;
 #locationForm {
-  #pilihKota {
-    width: $with-full;
-    display: $d-block;
-    margin: 0;
-  }
-  #pilihOutlet {
+  .groupInput {
     width: $with-full;
     display: $d-block;
     margin: 0;

@@ -172,7 +172,6 @@
               </b-col>
             </b-row>
           </div>
-          <template v-slot:footer></template>
         </b-card>
       </div>
       <div>
@@ -257,7 +256,7 @@ import moment from "moment";
 import snackbar from "@/utils/snackbar";
 import { randString, intToIdr, reformatDate, date } from "@/utils/helper";
 export default {
-  name: "",
+  name: "WizardFormFourReserve",
   data() {
     const invoice = randString();
     return {

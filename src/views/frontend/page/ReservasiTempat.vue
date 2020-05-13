@@ -18,7 +18,7 @@
         <h3>{{ $t("book_place") }}</h3>
         <p>{{ $t("book_place_desc") }}</p>
       </div>
-      <OrderFormWizard />
+      <OrderFormWizardReserve />
     </div>
   </section>
   <!-- Booking Table Section Ending Here -->
@@ -33,8 +33,10 @@ export default {
     };
   },
   components: {
-    OrderFormWizard: () =>
-      import("@/components/frontend/utils/ReservasiTempat/OrderWizard")
+    OrderFormWizardReserve: () =>
+      import(
+        "@/components/frontend/utils/ReservasiTempat/OrderFormWizardReserve"
+      )
   },
   mounted() {
     this.$store.dispatch("destroyOrder");

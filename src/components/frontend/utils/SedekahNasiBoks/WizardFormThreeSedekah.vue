@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col sm>
-      <b-form-group :label="$t('detail_reciver') + ' :'">
+      <b-form-group :label="$t('donation_data') + ' :'">
         <b-list-group>
           <b-list-group-item>
             <div :class="$style.elipsis">{{ nameUser | capitalize }}</div>
@@ -17,7 +17,7 @@
         v-model="addressCustomer"
         id="modal-address"
         centered
-        :title="$t('detail_reciver') + ' :'"
+        :title="$t('donation_data') + ' :'"
       >
         <b-form-group
           :label="$t('fullname') | capitalize"
@@ -55,7 +55,7 @@
           </div>
         </template>
       </b-modal>
-      <b-form-group :label="$t('reciver_address') + ' :'">
+      <b-form-group :label="$t('donation_address') + ' :'">
         <b-list-group>
           <b-list-group-item>
             <div :class="$style.elipsis">{{ addressUser | capitalize }}</div>
@@ -71,7 +71,7 @@
         v-model="addressModal"
         id="modal-address"
         centered
-        :title="$t('reciver_address') + ' :'"
+        :title="$t('donation_address') + ' :'"
       >
         <div class="py-2">
           <b-embed
@@ -111,19 +111,21 @@
       </b-modal>
     </b-col>
     <b-col sm>
-      <b-form-group
-        :label="$t('scheduling_visit') | capitalize"
-        label-for="date-range"
-      >
-        <functional-calendar
-          :is-date-picker="true"
-          :limits="limitDate"
-          v-model="range"
-        ></functional-calendar>
+      <!-- <b-form-group :label="$t('scheduling_visit') | capitalize" label-for="date-range">
+        <functional-calendar :is-date-picker="true" :limits="limitDate" v-model="range"></functional-calendar>
       </b-form-group>
       <b-form-group label-for="time">
         <b-form-timepicker v-model="time" locale="en"></b-form-timepicker>
-      </b-form-group>
+      </b-form-group>-->
+      <div>
+        <img
+          v-lazy="
+            require('@/assets/images/frontend/banner/bg/top-view-of-food-1640772.jpg')
+          "
+          alt="food-one"
+          class="img-fluid d-none d-md-flex"
+        />
+      </div>
     </b-col>
     <b-col cols="12" class="my-3">
       <div class="d-block">
@@ -142,31 +144,19 @@
 </template>
 
 <script>
-import moment from "moment";
+// import moment from "moment";
 import toast from "@/utils/toast";
 import _ from "lodash";
 export default {
-  name: "WizardFormThree",
+  name: "WizardFormThreeSedekah",
   data() {
     return {
       addressCustomer: false,
       addressModal: false,
-      range: {},
       nameUser: "",
       phoneUser: "",
-      addressUser: "",
-      time: ""
+      addressUser: ""
     };
-  },
-  computed: {
-    limitDate: function() {
-      return {
-        min: moment().format("DD/MM/YYYY"),
-        max: moment()
-          .add(6, "months")
-          .format("DD/MM/YYYY")
-      };
-    }
   },
   mounted() {
     this.nameUser = "Risqi Romadhoni";
@@ -177,10 +167,9 @@ export default {
   methods: {
     saveData: async function() {
       if (
-        _.isEmpty(this.range) &&
-        this.nameUser != "" &&
-        this.phoneUser != "" &&
-        this.addressUser != ""
+        _.isEmpty(this.nameUser) &&
+        _.isEmpty(this.phoneUser) &&
+        _.isEmpty(this.addressUser)
       )
         toast.warning("Mohon Lengkapi Form di Atas");
       else {
@@ -188,9 +177,9 @@ export default {
         let step = this.$store.state.order.step;
         const newStep = step.map(m => {
           // Finish curent page form
-          if (m.component === "WizardFormThree") m.isFinish = true;
+          if (m.component === "WizardFormThreeSedekah") m.isFinish = true;
           // Change curent page form
-          this.$parent.formPage = "WizardFormFour";
+          this.$parent.formPage = "WizardFormFourSedekah";
           // Role Activate page form
           if (m.component == this.$parent.formPage) {
             m.isActive = true;
@@ -208,9 +197,7 @@ export default {
           data: {
             name: this.nameUser,
             phone: this.phoneUser,
-            address: this.addressUser,
-            date: this.range,
-            time: this.time
+            address: this.addressUser
           }
         };
         this.$store.dispatch("setOrderDetail", data);

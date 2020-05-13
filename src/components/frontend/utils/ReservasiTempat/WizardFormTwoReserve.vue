@@ -41,7 +41,7 @@
 import products from "@/store/static/product";
 import toast from "@/utils/toast";
 export default {
-  name: "WizardFormTwo",
+  name: "WizardFormTwoReserve",
   data() {
     return {
       btnNext: false,
@@ -71,9 +71,9 @@ export default {
         let step = this.$store.state.order.step;
         const newStep = step.map(m => {
           // Finish curent page form
-          if (m.component === "WizardFormTwo") m.isFinish = true;
+          if (m.component === "WizardFormTwoReserve") m.isFinish = true;
           // Change curent page form
-          this.$parent.formPage = "WizardFormThree";
+          this.$parent.formPage = "WizardFormThreeReserve";
           // Role Activate page form
           if (m.component == this.$parent.formPage) {
             m.isActive = true;
