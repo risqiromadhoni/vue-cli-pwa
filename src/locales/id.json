@@ -26,6 +26,7 @@
   "close": "Tutup",
   "edit": "Ubah",
   "city": "Kota",
+  "copy_invoice": "Salin Invoice",
   "make_sure_your_data_is_correct": "Pastikan data anda sudah benar",
   "success_copy_code_invoice": "Kode invoice telah tersalin",
   "chose_range_date": "Jangka waktu berlangganan",
@@ -50,5 +51,10 @@
   "minimum_nominal_donation": "Mimal nominal donasi",
   "nominal_value_is_often_chosen": "Nominal yang sering dipilih",
   "nominal_other_donations": "Nominal Donasi Lainnya",
-  "donation_min_tenthousand": "Jumlah donasi minimal Rp 10.000."
+  "donation_min_tenthousand": "Jumlah donasi minimal Rp 10.000.",
+  "orpanage_service": "Sedekah Nasi Boks",
+  "rice_boks_service": "Nasi Boks",
+  "reservation_place_service": "Boking Tempat",
+  "transaction_history": "Histori Transaksi",
+  "transaction_history_desc": "Cek transaksi anda secara berkala untuk mendapatkan layanan paling update"
 }

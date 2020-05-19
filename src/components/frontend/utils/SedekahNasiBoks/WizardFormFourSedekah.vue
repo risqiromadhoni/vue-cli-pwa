@@ -33,7 +33,7 @@
               <i
                 class="icofont icofont-ui-copy"
                 v-b-tooltip.hover
-                title="Salin Invoice"
+                :title="$t('copy_invoice')"
                 @click="salinInvoice(`FPD-${invoice}`)"
               ></i>
             </span>
@@ -251,7 +251,6 @@ export default {
       return {
         location: this.storeData.form.location,
         customer: this.storeData.form.customer,
-        /* @param 10 ppn (%) */
         product: this.storeData.form.product[0]
       };
     }

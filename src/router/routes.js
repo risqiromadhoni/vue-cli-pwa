@@ -39,6 +39,11 @@ const childFrontend = [
     ]
   },
   {
+    path: "/order-history",
+    name: "OrderHistory",
+    component: () => import("@/views/frontend/auth/view/OrderHistory")
+  },
+  {
     // Login: Route
     path: "/login",
     name: "Login",

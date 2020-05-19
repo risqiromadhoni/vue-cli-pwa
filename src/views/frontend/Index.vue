@@ -19,6 +19,19 @@ export default {
   components: {
     HeaderComponents: () => import("@/components/frontend/Header"),
     FooterComponents: () => import("@/components/frontend/Footer")
+  },
+  mounted() {
+    navigator.geolocation.getCurrentPosition(this.showLocation);
+  },
+  methods: {
+    showLocation: function(position) {
+      const res = {
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude
+      };
+      console.log(res);
+      return res;
+    }
   }
 };
 </script>
