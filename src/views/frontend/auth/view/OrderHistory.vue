@@ -3,7 +3,7 @@
   <section class="product style-2 bg-body padding-tb">
     <div class="container">
       <div class="section-header">
-        <h3>{{ $t("transaction_history") }}</h3>
+        <h3>{{ $t("transaction_history") | capitalize }}</h3>
         <p>{{ $t("transaction_history_desc") }}.</p>
       </div>
       <div class="section-wrapper">
@@ -35,7 +35,7 @@
                     <table>
                       <tbody>
                         <tr>
-                          <td>Status</td>
+                          <td>{{ $t("status") }}</td>
                           <td>
                             <div class="px-2">:</div>
                           </td>
@@ -44,14 +44,14 @@
                           </td>
                         </tr>
                         <tr>
-                          <td>Total</td>
+                          <td>{{ $t("total") }}</td>
                           <td>
                             <div class="px-2">:</div>
                           </td>
                           <td>{{ item.order.total | intToIdr }}</td>
                         </tr>
                         <tr>
-                          <td>Pelanggan</td>
+                          <td>{{ $t("customer") }}</td>
                           <td>
                             <div class="px-2">:</div>
                           </td>
@@ -92,6 +92,8 @@ export default {
       this.$store.state.service.services,
       this.remapNavigate
     );
+  },
+  mounted() {
     this.data = [
       {
         invoice: `FPD-${randString()}`,

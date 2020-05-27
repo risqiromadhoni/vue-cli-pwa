@@ -83,7 +83,7 @@
               </b-col>
             </b-row>
             <ul class="timeline">
-              <li v-for="item in invDetail.detail" :key="item.day">
+              <li v-for="(item, key) in invDetail.detail" :key="key">
                 <a>
                   {{ new Date() | date("DD MMMM YYYY") }}
                   <b-badge

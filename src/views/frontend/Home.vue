@@ -69,10 +69,7 @@
     <!-- Food Product Section Ending here -->
 
     <!-- Food Product Section Style 2 Start here -->
-    <section
-      class="product style-2 padding-tb"
-      style="background-image: url(assets/css/bg-image/product-2.jpg);"
-    >
+    <section class="product style-2 padding-tb">
       <div class="container">
         <div class="section-header">
           <h3>{{ $t("our_service") }}</h3>

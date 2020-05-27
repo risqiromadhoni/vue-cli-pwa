@@ -58,9 +58,9 @@
                     <b-input-group size="lg" prepend="Rp" class="mt-2">
                       <b-form-input type="number" v-model="idr"></b-form-input>
                     </b-input-group>
-                    <small v-show="warnIdr" class="text-danger">{{
-                      $t("donation_min_tenthousand")
-                    }}</small>
+                    <small v-show="warnIdr" class="text-danger">
+                      {{ $t("donation_min_tenthousand") }}
+                    </small>
                   </div>
                 </b-list-group-item>
               </b-list-group>
@@ -124,7 +124,7 @@ export default {
   methods: {
     saveProduct: async function(params = 0) {
       if (params !== 0) this.idr = params;
-      this.processProduct(params);
+      this.processProduct(this.idr);
     },
     processProduct: async function(params) {
       if (params < 10000) toast.warning(i18n.t("donation_min_tenthousand"));
