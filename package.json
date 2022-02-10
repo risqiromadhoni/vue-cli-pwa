@@ -61,7 +61,7 @@
     "isotope-layout": "^3.0.6",
     "lightcase": "^2.5.0",
     "mutationobserver-shim": "^0.3.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "path": "^0.12.7",
     "popper.js": "^1.16.0",
     "portal-vue": "^2.1.6",
